@@ -13,25 +13,25 @@
       </div>
     </div>
     <div class="flex flex-wrap md:px-24 px-12">
-      <div class="flex flex-col xl:w-30-percent xl:pr-12 w-full mb-12">
+      <div
+        class="3xl:mb-32 xl:w-70-percent w-full lg:h-3/4-screen h-3/5-screen mb-12"
+      >
+        <yandex-map :coords="coords" :zoom="15">
+          <ymap-marker :coords="coords" marker-id="1" hint-content="Artasur" />
+        </yandex-map>
+      </div>
+      <div class="flex flex-col xl:w-30-percent xl:pl-12 w-full mb-12">
         <div class="mb-12 xl:w-full xl:mx-0 md:w-70-percent w-full mx-auto">
           <CallbackFormComponent />
         </div>
         <div class="text-md 3xl:text-2xl 2xl:text-xl xl:text-lg opacity-50">
           * Постоянно в наличии стройматериалы по низким ценам! <br />
           <br />
-          * Билборд на МКАД по бартеру! <br />
+          * Бигборд на МКАД по бартеру! <br />
           <br />
           Обращайтесь по телефону: <br />
           <a href="tel:+375296746298">+375 (29) 674-62-98</a>
         </div>
-      </div>
-      <div
-        class="3xl:mb-32 xl:w-70-percent w-full lg:h-3/4-screen h-3/5-screen"
-      >
-        <yandex-map :coords="coords" :zoom="15">
-          <ymap-marker :coords="coords" marker-id="1" hint-content="Artasur" />
-        </yandex-map>
       </div>
     </div>
     <svg

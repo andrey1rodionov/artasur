@@ -52,7 +52,21 @@ module.exports = {
       },
       height: {
         "3/4-screen": "75vh",
-        "3/5-screen": "60vh"
+        "3/5-screen": "60vh",
+        "85-percent": "85%"
+      },
+      minHeight: {
+        "3xl": "1140px",
+        "2xl": "980px",
+        xl: "800px",
+        lg: "668px"
+      },
+      maxHeight: {
+        "820": "820px",
+        "900": "900px",
+        "960": "960px",
+        "1080": "1080px",
+        "1550": "1550px"
       }
     }
   },

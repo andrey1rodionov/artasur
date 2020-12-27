@@ -13,7 +13,7 @@
           class="text-red-500 h-6 text-sm"
           v-if="$v.username.$dirty && !$v.username.required"
         >
-          Пожалуйста введите свое имя
+          Пожалуйста, введите свое имя
         </div>
       </div>
       <div>
@@ -32,13 +32,13 @@
           class="text-red-500 h-6 text-sm"
           v-if="$v.email.$dirty && !$v.email.required"
         >
-          Пожалуйста введите свою эл. почту
+          Пожалуйста, введите свою эл. почту
         </div>
         <div
           class="text-red-500 h-6 text-sm"
           v-if="$v.email.$dirty && !$v.email.email"
         >
-          Пожалуйста введите корректную ел. почту
+          Пожалуйста, введите корректную ел. почту
         </div>
       </div>
       <div class="py-2">
@@ -58,13 +58,13 @@
           class="text-red-500 h-6 text-sm"
           v-if="$v.phoneNumber.$dirty && !$v.phoneNumber.required"
         >
-          Пожалуйста введите свой номер телефона
+          Пожалуйста, введите свой номер телефона
         </div>
         <div
           class="text-red-500 h-6 text-sm"
           v-else-if="$v.phoneNumber.$dirty && !$v.phoneNumber.minLength"
         >
-          Пожалуйста введите корректный номер телефона
+          Пожалуйста, введите корректный номер телефона
         </div>
       </div>
       <div class="flex w-full text-white text-2xl pt-2">
@@ -133,5 +133,5 @@ export default {
 .hvr-underline-from-center
   &::before
     background: white !important
-    height: 4px !important
+    height: 2px !important
 </style>

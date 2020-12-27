@@ -3,10 +3,11 @@
 
 .content-height {
     height: 100vh;
+    @apply 3xl:min-h-3xl 2xl:min-h-2xl xl:min-h-xl lg:min-h-lg
 }
 
 @media (orientation: portrait) and (min-height: 1025px){
     .content-height {
-        height: 900px;
+        height: 760px;
     }
 }

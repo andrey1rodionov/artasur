@@ -10,10 +10,16 @@
           Контакты
         </div>
         <div class="flex flex-col">
-          <div class="flex items-center  mb-2">
+          <div class="flex items-center">
             <i class="fa fa-phone px-2"></i>
             <a class="hover:text-footer-textHover" href="tel:+375296896679"
-              >+375296896679</a
+              >+375 (29) 689-66-79</a
+            >
+          </div>
+          <div class="flex items-center my-2">
+            <i class="fa fa-phone-rotary px-2"></i>
+            <a class="hover:text-footer-textHover" href="tel:+375175121000"
+              >+375 (17) 512-10-00</a
             >
           </div>
           <div class="flex items-center">
@@ -72,7 +78,7 @@
         </a>
       </div>
     </div>
-    <div class="flex flex-col lg:hidden px-24 mb-8 md:mb-0">
+    <div class="flex flex-col lg:hidden px-16 mb-8 md:mb-0">
       <div
         class="flex md:justify-between md:flex-row md:items-stretch flex-col items-center mb-4 md:mb-0"
       >
@@ -83,10 +89,16 @@
             Контакты
           </div>
           <div class="flex flex-col">
-            <div class="flex items-center mb-2">
+            <div class="flex items-center">
               <i class="fa fa-phone px-2"></i>
               <a class="hover:text-footer-textHover" href="tel:+375296896679"
-                >+375296896679</a
+                >+375 (29) 689-66-79</a
+              >
+            </div>
+            <div class="flex items-center my-2">
+              <i class="fa fa-phone-rotary px-2"></i>
+              <a class="hover:text-footer-textHover" href="tel:+375175121000"
+                >+375 (17) 512-10-00</a
               >
             </div>
             <div class="flex items-center">
@@ -172,7 +184,7 @@
         УНП 800008495 ОКПО 37547354 <br />
         р/с 3012040197419 <br />
         в ОАО «Евроторгинвестбанк», код 735 <br />
-        Адрес банка : г. Минск, ул. Л. Беды, 2Б, код 735
+        Адрес банка: г. Минск, ул. Л. Беды, 2Б, код 735
       </div>
     </div>
     <div
