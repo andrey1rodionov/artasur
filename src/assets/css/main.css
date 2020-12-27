@@ -1,0 +1,12 @@
+@import 'tailwind.css';
+@import 'fonts.css';
+
+.content-height {
+    height: 100vh;
+}
+
+@media (orientation: portrait) and (min-height: 1025px){
+    .content-height {
+        height: 900px;
+    }
+}
