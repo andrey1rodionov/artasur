@@ -31,7 +31,7 @@ export default {
     AboutComponent,
     ClientInformationComponent,
     MapComponent,
-    FooterComponent
-  }
+    FooterComponent,
+  },
 };
 </script>

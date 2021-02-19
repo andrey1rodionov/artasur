@@ -18,14 +18,14 @@
       </div>
       <div>
         <input
-          type="text"
+          type="email"
           placeholder="Ваша электронная почта"
           class="input-field"
           v-model.trim="email"
           :class="{
             invalid:
               ($v.email.$dirty && !$v.email.required) ||
-              ($v.email.$dirty && !$v.email.email)
+              ($v.email.$dirty && !$v.email.email),
           }"
         />
         <div
@@ -43,7 +43,7 @@
       </div>
       <div class="py-2">
         <input
-          type="text"
+          type="tel"
           placeholder="Ваш номер телефона"
           class="input-field"
           v-model="phoneNumber"
@@ -51,7 +51,7 @@
           :class="{
             invalid:
               ($v.phoneNumber.$dirty && !$v.phoneNumber.required) ||
-              ($v.phoneNumber.$dirty && !$v.phoneNumber.minLength)
+              ($v.phoneNumber.$dirty && !$v.phoneNumber.minLength),
           }"
         />
         <div
@@ -69,10 +69,10 @@
       </div>
       <div class="flex w-full text-white text-2xl pt-2">
         <button
-          class="bg-button-blue text-white w-full py-3 btn text-lg focus:outline-none 3xl:text-3xl xl:text-lg lg:text-sm hvr-underline-from-center"
+          class="bg-button-blue text-white w-full py-3 btn text-lg focus:outline-none 3xl:text-3xl xl:text-lg lg:text-sm hvr-underline-from-center pulse-single"
           type="submit"
         >
-          Отправить заявку
+          {{ buttonText }}
         </button>
       </div>
     </form>
@@ -81,22 +81,27 @@
 
 <script>
 import { email, required, minLength } from "vuelidate/lib/validators";
+import { mapGetters, mapMutations } from "vuex";
+import axios from "axios";
+
 export default {
   data() {
     return {
       username: "",
       email: "",
-      phoneNumber: ""
+      phoneNumber: "",
+      buttonText: "Отправить заявку",
     };
   },
   validations: {
     username: { required },
     email: { email, required },
     phoneNumber: { required, minLength: minLength(19) },
-    deliveryAddress: { required }
   },
   methods: {
-    async onSubmit() {
+    ...mapGetters(["getBillboards"]),
+    ...mapMutations(["SET_BILLBOARD"]),
+    onSubmit() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
@@ -105,12 +110,29 @@ export default {
       const userOrderData = {
         name: this.username,
         phone: this.phoneNumber,
-        email: this.email
+        email: this.email,
+        billboards: this.getBillboards(),
       };
 
+      axios
+        .post("http://media.artasur.by/callback.php", userOrderData)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       console.log(userOrderData);
-    }
-  }
+
+      this.$v.$reset();
+
+      this.buttonText = "Спасибо за заявку";
+      setTimeout(() => (this.buttonText = "Отправить заявку"), 5000);
+      this.SET_BILLBOARD([]);
+      this.username = this.email = this.phoneNumber = "";
+    },
+  },
 };
 </script>
 
@@ -134,4 +156,15 @@ export default {
   &::before
     background: white !important
     height: 2px !important
+
+@keyframes pulse
+  0%
+    transform: scale(0.6)
+  50%
+    transform: scale(1.4)
+  100%
+    transform: scale(1)
+
+.pulse-single:active
+  animation: pulse 0.2s 1 ease
 </style>

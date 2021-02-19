@@ -15,12 +15,14 @@
             <a class="hover:text-footer-textHover" href="tel:+375296896679"
               >+375 (29) 689-66-79</a
             >
+            <p>, директор</p>
           </div>
           <div class="flex items-center my-2">
             <i class="fa fa-phone-rotary px-2"></i>
             <a class="hover:text-footer-textHover" href="tel:+375175121000"
               >+375 (17) 512-10-00</a
             >
+            <p>, основной</p>
           </div>
           <div class="flex items-center">
             <i class="fa fa-envelope px-2"></i>
@@ -32,11 +34,11 @@
       </div>
       <div>
         <div
-          class="text-footer-header text-md 3xl:text-2xl 2xl:text-xl xl:text-lg  mb-2"
+          class="text-footer-header text-md 3xl:text-2xl 2xl:text-xl xl:text-lg mb-2"
         >
           График работы
         </div>
-        <div class="flex flex-col  mb-2">
+        <div class="flex flex-col mb-2">
           <p class="mb-2">9:00 - 17:00</p>
           <p class="mb-2">Выходной: суббота,</p>
           <p class="mb-2">воскресенье</p>
@@ -70,7 +72,7 @@
         </div>
       </div>
       <div class="flex">
-        <a href="#" class="mr-4">
+        <a href="https://t.me/Severinovsa" target="_blank" class="mr-4">
           <i class="fab fa-telegram fa-3x hover:text-footer-textHover"></i>
         </a>
         <a href="viber://chat?number=+375296896679">
@@ -94,12 +96,14 @@
               <a class="hover:text-footer-textHover" href="tel:+375296896679"
                 >+375 (29) 689-66-79</a
               >
+              <p>, директор</p>
             </div>
             <div class="flex items-center my-2">
               <i class="fa fa-phone-rotary px-2"></i>
               <a class="hover:text-footer-textHover" href="tel:+375175121000"
                 >+375 (17) 512-10-00</a
               >
+              <p>, основной</p>
             </div>
             <div class="flex items-center">
               <i class="fa fa-envelope px-2"></i>
@@ -155,7 +159,7 @@
           </div>
         </div>
         <div class="flex items-center">
-          <a href="#" class="mr-4">
+          <a href="https://t.me/Severinovsa" target="_blank" class="mr-4">
             <i
               class="fab fa-telegram fa-3x md:fa-4x hover:text-footer-textHover"
             ></i>

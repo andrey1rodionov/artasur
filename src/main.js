@@ -1,16 +1,20 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import store from "./store";
 
 // CSS
 import "./assets/css/main.css";
 import "hover.css";
+import "aos/dist/aos.css";
 
 // Library
 import VueKinesis from "vue-kinesis";
 import VueScrollTo from "vue-scrollto";
 import Vuelidate from "vuelidate";
 import VueMask from "v-mask";
+import AOS from "aos";
+import Axios from "axios";
 
 Vue.config.productionTip = false;
 
@@ -26,12 +30,17 @@ Vue.use(VueScrollTo, {
   onDone: false,
   onCancel: false,
   x: false,
-  y: true
+  y: true,
 });
 Vue.use(Vuelidate);
 Vue.use(VueMask);
+Vue.use(Axios);
 
 new Vue({
   router,
-  render: h => h(App)
+  created() {
+    AOS.init();
+  },
+  store,
+  render: (h) => h(App),
 }).$mount("#app");

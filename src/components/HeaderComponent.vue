@@ -10,13 +10,15 @@
           alt=""
         />
       </kinesis-element>
-      <div class="hidden mb-2 lg:block max-h-full">
-        <img
-          src="../assets/images/billboard-min.png"
-          alt=""
-          class="billboard-div h-85-percent 3xl:ml-64 xl:ml-24 lg:ml-16 2xl:ml-48"
-        />
-      </div>
+      <transition>
+        <div class="hidden mb-2 lg:block max-h-full">
+          <img
+            src="../assets/images/billboard-min.png"
+            alt=""
+            class="entranceFromLeft billboard-div h-85-percent 3xl:ml-64 xl:ml-24 lg:ml-16 2xl:ml-48"
+          />
+        </div>
+      </transition>
       <div
         class="lg:block contact-div-lg py-8 3xl:px-48 xl:px-16 lg:px-8 text-center hidden w-full"
       >
@@ -72,7 +74,7 @@
             Эффективная наружная реклама
           </div>
           <div class="py-4 text-md 3xl:text-3xl 2xl:text-2xl xl:text-xl">
-            реклама на биллбордах
+            реклама на билбордах
           </div>
         </div>
         <div class="pt-4">
@@ -105,9 +107,7 @@
           </div>
         </div>
         <div class="pt-8">
-          <div class="md:text-3xl text-2xl">
-            Эффективная наружная реклама
-          </div>
+          <div class="md:text-3xl text-2xl">Эффективная наружная реклама</div>
           <div class="py-4 text-md md:text-2xl text-lg">
             Реклама на биллбордах
           </div>
@@ -150,7 +150,7 @@
 import { Slide } from "vue-burger-menu";
 
 export default {
-  components: { Slide }
+  components: { Slide },
 };
 </script>
 
@@ -173,13 +173,15 @@ svg
   position: absolute
   bottom: 0
   left: 0
+  opacity: 0
+  animation-fill-mode: forwards
 
 .bm-burger-bars
-  background-color: white
-  border-radius: 4px
+  background-color: white !important
+  border-radius: 4px !important
 
 .bm-menu
-  background-color: #263135
+  background-color: #263135 !important
 
 .info-div-lg
   position: absolute
@@ -202,4 +204,18 @@ svg
   &::before
     background: white !important
     height: 2px !important
+
+.entranceFromLeft
+  animation-name: entranceFromLeft
+  animation-duration: 3500ms
+  animation-delay: 500ms
+
+@keyframes entranceFromLeft
+  from
+    opacity: 0
+    transform: translate3d(-100%, 0, 0)
+
+  to
+    opacity: 1
+    transform: translate3d(0, 0, 0)
 </style>

@@ -14,7 +14,7 @@
           {{ header }}
         </div>
         <div
-          class="text-center opacity-50 text-md 3xl:text-2xl 2xl:text-xl xl:text-lg"
+          class="text-center opacity-50 text-sm 3xl:text-xl 2xl:text-lg xl:text-lg"
         >
           {{ text }}
         </div>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ["gradient", "icon", "header", "text"]
+  props: ["gradient", "icon", "header", "text"],
 };
 </script>
 

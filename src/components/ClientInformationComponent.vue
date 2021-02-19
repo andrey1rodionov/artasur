@@ -15,6 +15,8 @@
         v-for="(brand, index) in brands"
         :key="index"
         :imageUrl="brand.path"
+        data-aos="fade-up"
+        data-aos-delay="250"
       />
     </div>
     <svg
@@ -29,89 +31,99 @@
 
 <script>
 import LogoComponent from "@/components/LogoComponent";
+
 export default {
   components: { LogoComponent },
   data() {
     return {
       brands: [
         {
-          path: "A1.png"
+          path: "A1.png",
         },
         {
-          path: "alter.png"
+          path: "alter.png",
         },
         {
-          path: "audi.png"
+          path: "audi.png",
         },
         {
-          path: "belmarket.png"
+          path: "belgiss.png",
         },
         {
-          path: "BMW.png"
+          path: "belmarket.png",
         },
         {
-          path: "bsb.png"
+          path: "BMW.png",
         },
         {
-          path: "ekk.png"
+          path: "bsb.png",
         },
         {
-          path: "ford.png"
+          path: "ekk.png",
         },
         {
-          path: "gippo.png"
+          path: "ford.png",
         },
         {
-          path: "grundfos.png"
+          path: "gippo.png",
         },
         {
-          path: "isuzu.png"
+          path: "grundfos.png",
         },
         {
-          path: "keramin.png"
+          path: "isuzu.png",
         },
         {
-          path: "kfc.png"
+          path: "izomat.svg",
         },
         {
-          path: "kolesoplus.png"
+          path: "keramin.png",
         },
         {
-          path: "kopilka.png"
+          path: "kfc.png",
         },
         {
-          path: "LM.png"
+          path: "kolesoplus.png",
         },
         {
-          path: "mac.png"
+          path: "kopilka.png",
         },
         {
-          path: "mile.png"
+          path: "LM.png",
         },
         {
-          path: "mts.png"
+          path: "mac.png",
         },
         {
-          path: "oma.png"
+          path: "mile.png",
         },
         {
-          path: "peugeot.png"
+          path: "mts.png",
         },
         {
-          path: "sosedi.png"
+          path: "oma.png",
         },
         {
-          path: "volkswagen.png"
+          path: "peugeot.png",
         },
         {
-          path: "wilo.png"
+          path: "prostore.png",
         },
         {
-          path: "zabudova.png"
-        }
-      ]
+          path: "sosedi.png",
+        },
+        {
+          path: "volkswagen.png",
+        },
+        {
+          path: "wilo.png",
+        },
+        {
+          path: "zabudova.png",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 

@@ -8,7 +8,7 @@
         class="text-md 3xl:text-3xl 2xl:text-2xl xl:text-xl text-center opacity-50 xl:mb-24 mb-16"
       >
         Можете выбрать интересующий Вас рекламный щит <br />
-        или оставить заявку, по которой мы обязательно <br />
+        и (или) оставить заявку, по которой мы обязательно <br />
         с Вами свяжемся!
       </div>
     </div>
@@ -16,18 +16,43 @@
       <div
         class="3xl:mb-32 xl:w-70-percent w-full lg:h-3/4-screen h-3/5-screen mb-12"
       >
-        <yandex-map :coords="coords" :zoom="15">
-          <ymap-marker :coords="coords" marker-id="1" hint-content="Artasur" />
+        <yandex-map :coords="maps.position" :zoom="maps.zoom">
+          <ymap-marker
+            v-for="mark in coords"
+            :key="mark.id"
+            :coords="mark.markCoords"
+            :marker-id="mark.id"
+            :hint-content="mark.title"
+            :icon="maps.markerIcon"
+            @click="onClick(mark.id, mark.title, mark.markCoords)"
+          />
         </yandex-map>
       </div>
       <div class="flex flex-col xl:w-30-percent xl:pl-12 w-full mb-12">
+        <div
+          class="text-md 3xl:text-xl 2xl:text-lg opacity-50"
+          v-if="!getBillboards.length"
+        >
+          * Ни один рекламный щит не выбран
+        </div>
+        <div
+          class="mb-8 xl:w-full xl:mx-0 md:w-70-percent w-full mx-auto overflow-x-hidden overflow-y-auto max-h-32"
+        >
+          <SelectedBillboardComponent
+            v-for="(billboard, index) in getBillboards"
+            :key="index"
+            :count="index + 1"
+            :id="billboard.id"
+            :tittle="billboard.tittle"
+          ></SelectedBillboardComponent>
+        </div>
         <div class="mb-12 xl:w-full xl:mx-0 md:w-70-percent w-full mx-auto">
           <CallbackFormComponent />
         </div>
-        <div class="text-md 3xl:text-2xl 2xl:text-xl xl:text-lg opacity-50">
+        <div class="text-md 3xl:text-xl 2xl:text-lg xl:text-lg opacity-50">
           * Постоянно в наличии стройматериалы по низким ценам! <br />
           <br />
-          * Бигборд на МКАД по бартеру! <br />
+          * Рекламный щит на МКАД по бартеру! <br />
           <br />
           Обращайтесь по телефону: <br />
           <a href="tel:+375296746298">+375 (29) 674-62-98</a>
@@ -47,14 +72,43 @@
 <script>
 import { yandexMap, ymapMarker } from "vue-yandex-maps";
 import CallbackFormComponent from "@/components/CallbackFormComponent";
+import listOfMarks from "@/assets/modules/list-of-marks";
+import { mapGetters, mapMutations } from "vuex";
+import SelectedBillboardComponent from "@/components/SelectedBillboardComponent";
 
 export default {
-  components: { yandexMap, ymapMarker, CallbackFormComponent },
+  components: {
+    yandexMap,
+    ymapMarker,
+    CallbackFormComponent,
+    SelectedBillboardComponent,
+  },
   data() {
     return {
-      coords: [54.001085, 27.676657]
+      maps: {
+        position: [53.902284, 27.561831],
+        zoom: 10,
+        markerIcon: {
+          layout: "default#imageWithContent",
+          imageHref: require("../assets/images/billboard-icon.png"),
+          imageSize: [32, 32],
+          imageOffset: [-32, -32],
+        },
+      },
+      coords: listOfMarks.coords,
     };
-  }
+  },
+  methods: {
+    ...mapMutations(["ADD_BILLBOARD"]),
+    onClick(id, tittle, coords) {
+      this.ADD_BILLBOARD({
+        id: id,
+        tittle: tittle,
+        coords: coords,
+      });
+    },
+  },
+  computed: mapGetters(["getBillboards"]),
 };
 </script>
 
