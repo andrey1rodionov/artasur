@@ -82,7 +82,6 @@
 <script>
 import { email, required, minLength } from "vuelidate/lib/validators";
 import { mapGetters, mapMutations } from "vuex";
-import axios from "axios";
 
 export default {
   data() {
@@ -114,16 +113,11 @@ export default {
         billboards: this.getBillboards(),
       };
 
-      axios
+      this.$http
         .post("http://media.artasur.by/callback.php", userOrderData)
         .then((res) => {
           console.log(res);
-        })
-        .catch((error) => {
-          console.log(error);
         });
-
-      console.log(userOrderData);
 
       this.$v.$reset();
 

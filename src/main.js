@@ -14,7 +14,6 @@ import VueScrollTo from "vue-scrollto";
 import Vuelidate from "vuelidate";
 import VueMask from "v-mask";
 import AOS from "aos";
-import Axios from "axios";
 
 Vue.config.productionTip = false;
 
@@ -34,7 +33,6 @@ Vue.use(VueScrollTo, {
 });
 Vue.use(Vuelidate);
 Vue.use(VueMask);
-Vue.use(Axios);
 
 new Vue({
   router,

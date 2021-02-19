@@ -176,6 +176,10 @@ svg
   opacity: 0
   animation-fill-mode: forwards
 
+.bm-burger-button
+  height: 24px !important
+  width: 30px !important
+
 .bm-burger-bars
   background-color: white !important
   border-radius: 4px !important

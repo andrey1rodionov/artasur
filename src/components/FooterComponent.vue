@@ -96,15 +96,15 @@
               <a class="hover:text-footer-textHover" href="tel:+375296896679"
                 >+375 (29) 689-66-79</a
               >
-              <p>, директор</p>
             </div>
-            <div class="flex items-center my-2">
+            <p class="text-center">директор</p>
+            <div class="flex items-center mt-2">
               <i class="fa fa-phone-rotary px-2"></i>
               <a class="hover:text-footer-textHover" href="tel:+375175121000"
                 >+375 (17) 512-10-00</a
               >
-              <p>, основной</p>
             </div>
+            <p class="text-center mb-2">основной</p>
             <div class="flex items-center">
               <i class="fa fa-envelope px-2"></i>
               <a

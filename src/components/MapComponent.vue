@@ -43,7 +43,7 @@
             :key="index"
             :count="index + 1"
             :id="billboard.id"
-            :tittle="billboard.tittle"
+            :title="billboard.title"
           ></SelectedBillboardComponent>
         </div>
         <div class="mb-12 xl:w-full xl:mx-0 md:w-70-percent w-full mx-auto">
@@ -100,10 +100,10 @@ export default {
   },
   methods: {
     ...mapMutations(["ADD_BILLBOARD"]),
-    onClick(id, tittle, coords) {
+    onClick(id, title, coords) {
       this.ADD_BILLBOARD({
         id: id,
-        tittle: tittle,
+        title: title,
         coords: coords,
       });
     },
