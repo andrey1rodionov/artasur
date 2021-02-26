@@ -6,7 +6,7 @@ try {
     $billboards = array();
     $i = 0;
 
-    foreach($dbh->query('SELECT * from billsboards') as $row) {
+    foreach($dbh->query('SELECT * from billboards') as $row) {
         $billboards[$i]['id'] = $row['id'];
         $billboards[$i]['title'] = $row['title'];
         $billboards[$i]['markCoords'] = $row['markCoords'];
@@ -14,11 +14,13 @@ try {
         $i++;
     }
     
-    print json_encode($billboards);
+    echo json_encode($billboards);
     
+    $i = 
+    $billboards = 
     $dbh = null;
 
 } catch (PDOException $e) {
-    print json_encode($e);
+    echo json_encode($e);
     die();
 }
