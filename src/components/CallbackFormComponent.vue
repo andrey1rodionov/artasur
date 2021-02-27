@@ -67,6 +67,14 @@
           Пожалуйста, введите корректный номер телефона
         </div>
       </div>
+      <!--      <div class="pb-2">-->
+      <!--        <date-picker-->
+      <!--          v-model="dateRange"-->
+      <!--          lang="en"-->
+      <!--          type="date"-->
+      <!--          format="YYYY-MM-dd"-->
+      <!--        ></date-picker>-->
+      <!--      </div>-->
       <div class="flex w-full text-white text-2xl pt-2">
         <button
           class="bg-button-blue text-white w-full py-3 btn text-lg focus:outline-none 3xl:text-3xl xl:text-lg lg:text-sm hvr-underline-from-center pulse-single"
@@ -83,14 +91,18 @@
 import { email, required, minLength } from "vuelidate/lib/validators";
 import { mapGetters, mapMutations } from "vuex";
 import axios from "axios";
+// import DatePicker from "vue2-datepicker";
+import "vue2-datepicker/index.css";
 
 export default {
+  // components: { DatePicker },
   data() {
     return {
       username: "",
       email: "",
       phoneNumber: "",
       buttonText: "Отправить заявку",
+      dateRange: null,
     };
   },
   validations: {

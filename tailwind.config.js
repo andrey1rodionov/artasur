@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["Montserrat"]
+        montserrat: ["Montserrat"],
       },
       colors: {
         "button-blue": "#008aff",
@@ -12,66 +12,66 @@ module.exports = {
           bg: "#263135",
           header: "#86a5a7",
           text: "#676e70",
-          textHover: "#008aff"
+          textHover: "#008aff",
         },
         bgColor: {
-          from: "#b1d5e1",
-          to: "#d2dbd1"
+          from: "#83b0ee",
+          to: "#7392d2",
         },
         firstCircle: {
           from: "#0066ff",
-          to: "#0084ff"
+          to: "#0084ff",
         },
         secondCircle: {
           from: "#ffd200",
-          to: "#36ff00"
+          to: "#36ff00",
         },
         thirdCircle: {
           from: "#d02626",
-          to: "#ec4c4c"
+          to: "#ec4c4c",
         },
         fourthCircle: {
           from: "#a97e19",
-          to: "#b7a110"
+          to: "#b7a110",
         },
         fifthCircle: {
           from: "#cd3773",
-          to: "#e24c96"
-        }
+          to: "#e24c96",
+        },
       },
       screens: {
         "2xl": { min: "1536px", max: "1920px" },
-        "3xl": { min: "1921px" }
+        "3xl": { min: "1921px" },
       },
       width: {
         "12-percent": "12%",
         "10-percent": "10%",
         "70-percent": "70%",
         "30-percent": "30%",
-        "55-percent": "55%"
+        "55-percent": "55%",
       },
       height: {
         "3/4-screen": "75vh",
         "3/5-screen": "60vh",
-        "85-percent": "85%"
+        "85-percent": "85%",
       },
       minHeight: {
         "3xl": "1140px",
         "2xl": "980px",
         xl: "800px",
-        lg: "668px"
+        lg: "668px",
       },
       maxHeight: {
-        "820": "820px",
-        "900": "900px",
-        "960": "960px",
-        "1080": "1080px",
-        "1550": "1550px"
-      }
-    }
+        820: "820px",
+        900: "900px",
+        960: "960px",
+        1080: "1080px",
+        1550: "1550px",
+      },
+    },
   },
   variants: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
+  plugins: [],
 };

@@ -26,9 +26,8 @@
           <div class="flex w-2/5 items-center">
             <div class="flex flex-col text-lg xl:text-xl 3xl:text-3xl">
               <div class="flex items-center">
-                <i class="fa fa-phone px-2"></i>
-                <a href="tel:+375296896679">+375 (29) 689-66-79</a>
-                <a class="ml-2" href="tel:+375175121000">+375 (17) 512-10-00</a>
+                <i class="fa fa-phone-rotary px-2"></i>
+                <a href="tel:+375175121000">+375 (17) 512-10-00</a>
               </div>
               <div class="flex items-center">
                 <i class="fa fa-envelope px-2"></i>
@@ -42,14 +41,13 @@
               class="mx-2 xl:mx-6 cursor-pointer hvr-underline-from-left"
               v-scroll-to="'#aboutInformation'"
             >
-              Почему мы
+              О нас
             </a>
             <a
               href="#"
               class="mx-2 xl:mx-6 cursor-pointer hvr-underline-from-left"
-              v-scroll-to="'#clientInformation'"
             >
-              Нам доверяют
+              Клиентам
             </a>
             <a
               href="#"
@@ -79,7 +77,7 @@
         </div>
         <div class="pt-4">
           <button
-            class="bg-button-blue p-4 text-lg focus:outline-none 3xl:text-3xl xl:text-lg lg:text-sm hvr-underline-from-left"
+            class="bg-white text-black rounded-md p-4 text-lg focus:outline-none 3xl:text-3xl xl:text-lg lg:text-sm hvr-underline-from-left"
             v-scroll-to="'#mapInformation'"
           >
             Оставить заявку
@@ -93,11 +91,7 @@
           <img src="../assets/images/artasur-logo.png" alt="" />
         </div>
         <div class="flex flex-col text-lg md:text-2xl">
-          <div class="flex items-center">
-            <i class="fa fa-phone px-2"></i>
-            <a href="tel:+375296896679">+375 (29) 689-66-79</a>
-          </div>
-          <div class="flex items-center py-1">
+          <div class="flex items-center pb-1">
             <i class="fa fa-phone-rotary px-2"></i>
             <a href="tel:+375175121000">+375 (17) 512-10-00</a>
           </div>
@@ -114,7 +108,7 @@
         </div>
         <div class="pt-8">
           <button
-            class="bg-button-blue p-4 md:text-xl text-lg focus:outline-none"
+            class="bg-white text-black rounded-md p-4 md:text-xl text-lg focus:outline-none"
             v-scroll-to="'#mapInformation'"
           >
             Оставить заявку
@@ -124,10 +118,10 @@
     </div>
     <Slide class="lg:hidden" :closeOnNavigation="true">
       <a href="#" v-scroll-to="'#aboutInformation'">
-        <span>Почему мы</span>
+        <span>О нас</span>
       </a>
-      <a href="#" v-scroll-to="'#clientInformation'">
-        <span>Нам доверяют</span>
+      <a href="#">
+        <span>Клиентам</span>
       </a>
       <a href="#" v-scroll-to="'#mapInformation'">
         <span>Карта щитов</span>

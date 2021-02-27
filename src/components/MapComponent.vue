@@ -72,9 +72,9 @@
 <script>
 import { yandexMap, ymapMarker } from "vue-yandex-maps";
 import CallbackFormComponent from "@/components/CallbackFormComponent";
-import listOfMarks from "@/assets/modules/list-of-marks";
 import { mapGetters, mapMutations } from "vuex";
 import SelectedBillboardComponent from "@/components/SelectedBillboardComponent";
+import axios from "axios";
 
 export default {
   components: {
@@ -95,7 +95,7 @@ export default {
           imageOffset: [-32, -32],
         },
       },
-      coords: listOfMarks.coords,
+      coords: [],
     };
   },
   methods: {
@@ -107,8 +107,16 @@ export default {
         coords: coords,
       });
     },
+    fetchBillboards() {
+      axios.get("http://media.artasur.by/api.php").then((resp) => {
+        console.log(resp.data);
+      });
+    },
   },
   computed: mapGetters(["getBillboards"]),
+  async mounted() {
+    this.fetchBillboards();
+  },
 };
 </script>
 
