@@ -1,7 +1,54 @@
 <template>
   <div class="flex flex-col items-center w-full">
     <form @submit.prevent="onSubmit" class="w-full submit-form">
-      <div class="py-2">
+      <div class="pb-2" v-if="getBillboards.length">
+        <div class="text-sm md:text-lg mb-2 opacity-50">Период размещения</div>
+        <v-date-picker
+          v-model="dateRange"
+          mode="date"
+          :masks="masks"
+          :min-date="new Date()"
+          is-range
+        >
+          <template v-slot="{ inputValue, inputEvents }">
+            <div class="flex justify-center items-center">
+              <input
+                :value="inputValue.start"
+                v-on="inputEvents.start"
+                class="input-field"
+                :class="{
+                  invalid: $v.dateRange.$dirty && !$v.dateRange.required,
+                }"
+              />
+              <svg
+                class="w-12 h-12 mx-4 opacity-50"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+              <input
+                :value="inputValue.end"
+                v-on="inputEvents.end"
+                class="input-field"
+              />
+            </div>
+            <div
+              class="text-red-500 h-6 text-sm"
+              v-if="$v.dateRange.$dirty && !$v.dateRange.required"
+            >
+              Пожалуйста, введите период размещения
+            </div>
+          </template>
+        </v-date-picker>
+      </div>
+      <div class="pb-2">
         <input
           type="text"
           placeholder="Ваше имя"
@@ -67,14 +114,6 @@
           Пожалуйста, введите корректный номер телефона
         </div>
       </div>
-      <!--      <div class="pb-2">-->
-      <!--        <date-picker-->
-      <!--          v-model="dateRange"-->
-      <!--          lang="en"-->
-      <!--          type="date"-->
-      <!--          format="YYYY-MM-dd"-->
-      <!--        ></date-picker>-->
-      <!--      </div>-->
       <div class="flex w-full text-white text-2xl pt-2">
         <button
           class="bg-button-blue text-white w-full py-3 btn text-lg focus:outline-none 3xl:text-3xl xl:text-lg lg:text-sm hvr-underline-from-center pulse-single"
@@ -91,27 +130,30 @@
 import { email, required, minLength } from "vuelidate/lib/validators";
 import { mapGetters, mapMutations } from "vuex";
 import axios from "axios";
-// import DatePicker from "vue2-datepicker";
-import "vue2-datepicker/index.css";
 
 export default {
-  // components: { DatePicker },
   data() {
     return {
       username: "",
       email: "",
       phoneNumber: "",
       buttonText: "Отправить заявку",
-      dateRange: null,
+      dateRange: {
+        start: new Date(),
+        end: new Date(),
+      },
+      masks: {
+        input: "DD-MM-YYYY",
+      },
     };
   },
   validations: {
     username: { required },
     email: { email, required },
     phoneNumber: { required, minLength: minLength(19) },
+    dateRange: { required },
   },
   methods: {
-    ...mapGetters(["getBillboards"]),
     ...mapMutations(["SET_BILLBOARD"]),
     onSubmit() {
       if (this.$v.$invalid) {
@@ -119,12 +161,24 @@ export default {
         return;
       }
 
-      const userOrderData = {
-        name: this.username,
-        phone: this.phoneNumber,
-        email: this.email,
-        billboards: this.getBillboards(),
-      };
+      let userOrderData = null;
+
+      if (this.getBillboards.length) {
+        userOrderData = {
+          name: this.username,
+          phone: this.phoneNumber,
+          email: this.email,
+          billboards: this.getBillboards,
+          dateFrom: this.dateRange.start.toLocaleString().split(",")[0],
+          dateTo: this.dateRange.end.toLocaleString().split(",")[0],
+        };
+      } else {
+        userOrderData = {
+          name: this.username,
+          phone: this.phoneNumber,
+          email: this.email,
+        };
+      }
 
       axios
         .post("http://media.artasur.by/callback.php", userOrderData)
@@ -138,8 +192,10 @@ export default {
       setTimeout(() => (this.buttonText = "Отправить заявку"), 5000);
       this.SET_BILLBOARD([]);
       this.username = this.email = this.phoneNumber = "";
+      this.dateRange.start = this.dateRange.end = new Date();
     },
   },
+  computed: mapGetters(["getBillboards"]),
 };
 </script>
 

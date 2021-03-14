@@ -55,7 +55,7 @@
             class="mb-2 hover:text-footer-textHover"
             href="#"
             v-scroll-to="'#aboutInformation'"
-            >О нас</a
+            >Почему мы?</a
           >
           <a
             class="mb-2 hover:text-footer-textHover"
@@ -142,7 +142,7 @@
               class="mb-2 hover:text-footer-textHover"
               href="#"
               v-scroll-to="'#aboutInformation'"
-              >О нас</a
+              >Почему мы?</a
             >
             <a
               class="mb-2 hover:text-footer-textHover"

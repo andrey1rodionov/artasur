@@ -13,10 +13,13 @@
     "axios": "^0.21.1",
     "core-js": "^3.8.3",
     "hover.css": "^2.3.2",
+    "moment": "^2.29.1",
     "postcss": "^7",
     "postcss-cli": "^8.3.1",
+    "sass-loader": "10.1.1",
     "stylelint-config-recommended": "^3.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "v-calendar": "^2.2.3",
     "v-mask": "^2.2.4",
     "vue": "^2.6.11",
     "vue-burger-menu": "^2.0.5",
@@ -24,7 +27,6 @@
     "vue-router": "^3.5.1",
     "vue-scrollto": "^2.20.0",
     "vue-yandex-maps": "^0.10.9",
-    "vue2-datepicker": "^3.9.0",
     "vuelidate": "^0.7.6",
     "vuex": "^3.6.2"
   },
@@ -40,13 +42,15 @@
     "eslint-plugin-vue": "^7.5.0",
     "node-sass": "^5.0.0",
     "prettier": "^2.2.1",
-    "sass-loader": "^10.1.1",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
     "root": true,
     "env": {
       "node": true
+    },
+    "globals": {
+      "ymaps": "readonly"
     },
     "extends": [
       "plugin:vue/essential",

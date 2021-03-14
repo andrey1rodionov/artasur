@@ -24,7 +24,8 @@
             :marker-id="mark.id"
             :hint-content="mark.title"
             :icon="maps.markerIcon"
-            @click="onClick(mark.id, mark.title, mark.markCoords)"
+            :balloon-template="balloonTemplateWithMap"
+            @click="onClickMark(mark)"
           />
         </yandex-map>
       </div>
@@ -63,6 +64,7 @@
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
+      class="svg-line"
     >
       <polygon fill="#263135" points="0,100 100,0 100,100" />
     </svg>
@@ -71,6 +73,7 @@
 
 <script>
 import { yandexMap, ymapMarker } from "vue-yandex-maps";
+import { loadYmap } from "vue-yandex-maps";
 import CallbackFormComponent from "@/components/CallbackFormComponent";
 import { mapGetters, mapMutations } from "vuex";
 import SelectedBillboardComponent from "@/components/SelectedBillboardComponent";
@@ -96,15 +99,40 @@ export default {
         },
       },
       coords: [],
+      settings: {
+        apiKey: "9f67bdd5-33ec-4e47-8204-949f76c30100",
+        lang: "ru_RU",
+        coordorder: "latlong",
+        version: "2.1",
+      },
     };
   },
   methods: {
     ...mapMutations(["ADD_BILLBOARD"]),
-    onClick(id, title, coords) {
-      this.ADD_BILLBOARD({
-        id: id,
-        title: title,
-        coords: coords,
+    onClickMark(mark) {
+      ymaps.panorama.locate(mark.markCoords).done((panoramas) => {
+        if (panoramas.length > 0) {
+          // eslint-disable-next-line no-unused-vars
+          var player = new ymaps.panorama.Player("panorama", panoramas[0], {
+            direction: [256, 16],
+            controls: ["panoramaName"],
+          });
+          document.getElementById("panoramaAdd").onclick = () => {
+            this.ADD_BILLBOARD({
+              id: mark.id,
+              title: mark.title,
+              coords: mark.markCoords,
+            });
+          };
+          document.getElementById("panorama").style.visibility = "visible";
+          document.getElementById("panoramaAdd").style.visibility = "visible";
+        } else {
+          let errorDiv = document.createElement("div");
+          errorDiv.innerHTML = "<h1>Для данной точки не найдено панорамы</h1>";
+          errorDiv.style.fontSize = "15px";
+          // eslint-disable-next-line no-undef
+          panorama.before(errorDiv);
+        }
       });
     },
     fetchBillboards() {
@@ -113,7 +141,20 @@ export default {
       });
     },
   },
-  computed: mapGetters(["getBillboards"]),
+  computed: {
+    ...mapGetters(["getBillboards"]),
+    balloonTemplateWithMap() {
+      return `<div id="panorama" class="invisible lg:h-64 lg:w-72 md:h-56 md:w-64 h-36 w-56"></div>
+        <button
+          id="panoramaAdd"
+          class="bg-button-blue text-white py-1 px-2 text-sm focus:outline-none mt-2 mx-auto hover:opacity-90 pulse-single invisible">
+          Добавить
+        </button>`;
+    },
+  },
+  async created() {
+    await loadYmap({ ...this.settings, debug: true });
+  },
   async mounted() {
     this.fetchBillboards();
   },

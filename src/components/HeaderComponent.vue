@@ -22,7 +22,7 @@
       <div
         class="lg:block contact-div-lg py-8 3xl:px-48 xl:px-16 lg:px-8 text-center hidden w-full"
       >
-        <div class="flex items-center justify-between">
+        <div class="flex items-start justify-between">
           <div class="flex w-2/5 items-center">
             <div class="flex flex-col text-lg xl:text-xl 3xl:text-3xl">
               <div class="flex items-center">
@@ -35,34 +35,119 @@
               </div>
             </div>
           </div>
-          <div class="flex text-lg xl:text-xl 3xl:text-3xl">
-            <a
-              href="#"
-              class="mx-2 xl:mx-6 cursor-pointer hvr-underline-from-left"
-              v-scroll-to="'#aboutInformation'"
-            >
-              О нас
-            </a>
-            <a
-              href="#"
-              class="mx-2 xl:mx-6 cursor-pointer hvr-underline-from-left"
-            >
-              Клиентам
-            </a>
-            <a
-              href="#"
-              class="mx-2 xl:mx-6 cursor-pointer hvr-underline-from-left"
-              v-scroll-to="'#mapInformation'"
-            >
-              Карта щитов
-            </a>
-            <a
-              href="#"
-              class="ml-2 xl:ml-6 cursor-pointer hvr-underline-from-left"
-              v-scroll-to="'#footer'"
-            >
-              Контакты
-            </a>
+          <div class="relative">
+            <ul class="flex text-lg xl:text-xl 3xl:text-3xl">
+              <li>
+                <a
+                  href="#"
+                  class="mx-2 xl:mx-6 cursor-pointer hvr-underline-from-left"
+                  v-scroll-to="'#aboutInformation'"
+                >
+                  О нас
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="mx-2 xl:mx-6 cursor-pointer hvr-icon-down dd-menu-parent"
+                >
+                  Клиентам
+                </a>
+                <ul
+                  class="bg-white text-black p-4 rounded-md mt-4 invisible dd-menu-child absolute z-10 text-lg shadow-2xl"
+                >
+                  <div>
+                    <span class="flex justify-start">
+                      Заключение договора
+                    </span>
+                    <div class="text-left pl-4">
+                      <li>
+                        <i class="fal fa-file-word mr-1 text-blue-500"></i>
+                        <a
+                          href="../assets/download-files/dogovor.doc"
+                          download="dogovor.doc"
+                          class="opacity-50 hover:opacity-100"
+                        >
+                          договор
+                        </a>
+                      </li>
+                      <li>
+                        <i class="fal fa-file-word mr-1 text-blue-500"></i>
+                        <a
+                          href="../assets/download-files/garantijnoe-pismo.doc"
+                          download="garantijnoe-pismo.doc"
+                          class="opacity-50 hover:opacity-100"
+                        >
+                          гарантийное письмо
+                        </a>
+                      </li>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="flex justify-start">
+                      Нормативные документы
+                    </span>
+                    <div class="text-left pl-4">
+                      <li>
+                        <i class="fal fa-file-pdf mr-1 text-red-600"></i>
+                        <a
+                          href="../assets/download-files/zakon-o-reklame.pdf"
+                          download="zakon-o-reklame.pdf"
+                          class="opacity-50 hover:opacity-100"
+                        >
+                          закон о рекламе
+                        </a>
+                      </li>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="flex justify-start">Остальное</span>
+                    <div class="text-left pl-4">
+                      <li>
+                        <i
+                          class="fal fa-file-powerpoint mr-1 text-yellow-500"
+                        ></i>
+                        <a
+                          href="../assets/download-files/billboard-presentation-4x8.ppt"
+                          download="billboard-presentation-4x8.ppt"
+                          class="opacity-50 hover:opacity-100"
+                        >
+                          презентация
+                        </a>
+                      </li>
+                      <li>
+                        <i class="fal fa-file-word mr-1 text-blue-500"></i>
+                        <a
+                          href="../assets/download-files/trebovanija-k-maketam.doc"
+                          download="trebovanija-k-maketam.doc"
+                          class="opacity-50 hover:opacity-100"
+                        >
+                          требования к макетам
+                        </a>
+                      </li>
+                    </div>
+                  </div>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="mx-2 xl:mx-6 cursor-pointer hvr-underline-from-left"
+                  v-scroll-to="'#mapInformation'"
+                >
+                  Карта щитов
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="ml-2 xl:ml-6 cursor-pointer hvr-underline-from-left"
+                  v-scroll-to="'#footer'"
+                >
+                  Контакты
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -118,10 +203,10 @@
     </div>
     <Slide class="lg:hidden" :closeOnNavigation="true">
       <a href="#" v-scroll-to="'#aboutInformation'">
-        <span>О нас</span>
+        <span>Почемы мы?</span>
       </a>
-      <a href="#">
-        <span>Клиентам</span>
+      <a href="#" v-scroll-to="'#clientInformation'">
+        <span>Нам доверяют</span>
       </a>
       <a href="#" v-scroll-to="'#mapInformation'">
         <span>Карта щитов</span>
@@ -134,6 +219,7 @@
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
+      class="svg-line"
     >
       <polygon fill="#f2f2f2" points="0,100 100,0 100,100" />
     </svg>
@@ -149,7 +235,7 @@ export default {
 </script>
 
 <style lang="sass">
-svg
+.svg-line
   position: absolute
   bottom: 0
   width: 100%
@@ -207,6 +293,19 @@ svg
   animation-name: entranceFromLeft
   animation-duration: 3500ms
   animation-delay: 500ms
+
+.dd-menu-parent:hover ~ .dd-menu-child
+  visibility: visible
+  opacity: 1
+  transform: translateY(-8px)
+
+.dd-menu-child
+  transition: all 0.3s ease
+  left: 7.5%
+  &:hover
+    visibility: visible
+    opacity: 1
+    transform: translateY(-8px)
 
 @keyframes entranceFromLeft
   from

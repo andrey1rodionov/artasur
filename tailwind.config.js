@@ -49,11 +49,13 @@ module.exports = {
         "70-percent": "70%",
         "30-percent": "30%",
         "55-percent": "55%",
+        72: "18rem",
       },
       height: {
         "3/4-screen": "75vh",
         "3/5-screen": "60vh",
         "85-percent": "85%",
+        72: "18rem",
       },
       minHeight: {
         "3xl": "1140px",

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="">
+    <div>
       <HeaderComponent />
     </div>
     <div id="aboutInformation">
