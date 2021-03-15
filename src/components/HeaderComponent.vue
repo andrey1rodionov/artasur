@@ -64,7 +64,7 @@
                       <li>
                         <i class="fal fa-file-word mr-1 text-blue-500"></i>
                         <a
-                          href="../assets/download-files/dogovor.doc"
+                          href="files/dogovor.doc"
                           download="dogovor.doc"
                           class="opacity-50 hover:opacity-100"
                         >
@@ -74,7 +74,7 @@
                       <li>
                         <i class="fal fa-file-word mr-1 text-blue-500"></i>
                         <a
-                          href="../assets/download-files/garantijnoe-pismo.doc"
+                          href="files/garantijnoe-pismo.doc"
                           download="garantijnoe-pismo.doc"
                           class="opacity-50 hover:opacity-100"
                         >
@@ -91,7 +91,7 @@
                       <li>
                         <i class="fal fa-file-pdf mr-1 text-red-600"></i>
                         <a
-                          href="../assets/download-files/zakon-o-reklame.pdf"
+                          href="files/zakon-o-reklame.pdf"
                           download="zakon-o-reklame.pdf"
                           class="opacity-50 hover:opacity-100"
                         >
@@ -108,7 +108,7 @@
                           class="fal fa-file-powerpoint mr-1 text-yellow-500"
                         ></i>
                         <a
-                          href="../assets/download-files/billboard-presentation-4x8.ppt"
+                          href="files/billboard-presentation-4x8.ppt"
                           download="billboard-presentation-4x8.ppt"
                           class="opacity-50 hover:opacity-100"
                         >
@@ -118,7 +118,7 @@
                       <li>
                         <i class="fal fa-file-word mr-1 text-blue-500"></i>
                         <a
-                          href="../assets/download-files/trebovanija-k-maketam.doc"
+                          href="files/trebovanija-k-maketam.doc"
                           download="trebovanija-k-maketam.doc"
                           class="opacity-50 hover:opacity-100"
                         >

@@ -180,11 +180,9 @@ export default {
         };
       }
 
-      axios
-        .post("http://media.artasur.by/callback.php", userOrderData)
-        .then((res) => {
-          console.log(res);
-        });
+      axios.post("/callback.php", userOrderData).then((res) => {
+        console.log(res);
+      });
 
       this.$v.$reset();
 
