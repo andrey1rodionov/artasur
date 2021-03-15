@@ -137,8 +137,10 @@ export default {
     },
     fetchBillboards() {
       axios.get("http://media.artasur.by/api.php").then((resp) => {
-        console.log(this.coords.concat(resp.data));
-        // Array.prototype.push.apply(this.coords, resp.data);
+        this.coords.concat(resp.data);
+        console.log(this.coords);
+        console.log(this.coords.length);
+        console.log(this.coords[2]);
       });
     },
   },
@@ -157,7 +159,7 @@ export default {
     await loadYmap({ ...this.settings, debug: true });
   },
   async mounted() {
-    this.fetchBillboards();
+    await this.fetchBillboards();
   },
 };
 </script>
