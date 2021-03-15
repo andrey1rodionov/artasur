@@ -137,7 +137,7 @@ export default {
     },
     fetchBillboards() {
       axios.get("/api.php").then((resp) => {
-        console.log(resp.data);
+        this.coords = resp.data;
       });
     },
   },

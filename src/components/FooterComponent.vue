@@ -178,10 +178,12 @@
       <div
         class="flex items-center justify-center mx-auto lg:w-2/5 2xl:px-24 xl:px-8 lg:px-8 md:mb-12 lg:mb-0 md:w-full md:px-24 px-2 mb-8"
       >
-        <img src="../assets/images/artasur-logo-footer.png" alt="" />
+        <a href="#" v-scroll-to="'#header'">
+          <img src="../assets/images/artasur-logo-footer.png" alt="" />
+        </a>
       </div>
       <div class="md:w-3/5 w-full mb-8 md:mb-0">
-        ООО «Артасур», 220007 Республика Беларусь, г. Минск ул. Жуковского д. 7
+        ООО «Артасур», 220007, Республика Беларусь, г. Минск ул. Жуковского д. 7
         к.3
         <br />
         <br />
