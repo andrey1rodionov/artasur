@@ -98,6 +98,7 @@ export default {
           imageOffset: [-32, -32],
         },
       },
+      coords: [],
       settings: {
         apiKey: "9f67bdd5-33ec-4e47-8204-949f76c30100",
         lang: "ru_RU",
@@ -136,7 +137,12 @@ export default {
     },
     fetchBillboards() {
       axios.get("/api.php").then((resp) => {
-        this.coords = JSON.parse(JSON.stringify(resp.data));
+        console.log(resp);
+        console.log(resp.data());
+        console.log(JSON.parse(resp.data));
+        console.log(JSON.stringify(resp.data));
+        console.log(JSON.parse(JSON.stringify(resp.data)));
+        Array.prototype.push.apply(this.coords, resp.data);
       });
     },
   },
