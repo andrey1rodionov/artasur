@@ -14,7 +14,7 @@ try {
         $i++;
     }
 
-    print json_encode($billboards, JSON_UNESCAPED_UNICODE);
+    print json_encode($billboards, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
 
     $dbh = null;
 
