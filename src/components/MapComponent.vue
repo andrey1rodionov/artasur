@@ -20,7 +20,7 @@
           <ymap-marker
             v-for="mark in billboardsData"
             :key="mark.id"
-            :coords="mark.markCoords.match(/[\d.]+/gi)"
+            :coords="mark.markCoords"
             :marker-id="mark.id"
             :hint-content="mark.title"
             :icon="maps.markerIcon"
