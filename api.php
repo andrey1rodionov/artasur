@@ -9,7 +9,7 @@ try {
     foreach($dbh->query('SELECT * from billboards') as $row) {
         $billboards[$i]['id'] = $row['id'];
         $billboards[$i]['title'] = $row['title'];
-        $billboards[$i]['markCoords'] = $row['markCoords'];
+        preg_match_all('/[\d.]+/', $row['markCoords'], $billboards[$i]['markCoords']);
 
         $i++;
     }
