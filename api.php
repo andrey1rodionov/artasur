@@ -3,13 +3,16 @@
 try {
     $dbh = new PDO('mysql:host=localhost;dbname=artasurb_db', 'artasurb_db_user', 'db_pass');
 
-    $billboards = array();
+    $billboards;
     $i = 0;
 
     foreach($dbh->query('SELECT * from billboards') as $row) {
         $billboards[$i]['id'] = $row['id'];
         $billboards[$i]['title'] = $row['title'];
-        preg_match_all('/[\d.]+/', $row['markCoords'], $billboards[$i]['markCoords']);
+
+        $matches = array();
+        preg_match_all('/[\d.]+/', $row['markCoords'], $matches);
+        $billboards[$i]['markCoords'] = $matches[0];
 
         $i++;
     }
