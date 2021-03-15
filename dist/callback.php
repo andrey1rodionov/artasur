@@ -20,6 +20,7 @@ if(!empty($data['billboards'])) {
   foreach($data['billboards'] as $billboard)
     $billboards_string .= $billboard['title'] . "\n";
 
+  $bollboards_string .= "Выбранный период размещения: с {$data['dateFrom']} по {$data['dateTo']}\n";
 }
 
 $message = "Заявка на обратный звонок с сайта artasur.by\n\nОтправил заявку:\n{$data['name']}\n\nEmail отправителя:\n{$data['email']}\n\nТелефон отправителя:\n{$data['phone']}\n\n\n" . ($billboards_string ? $billboards_string:'Рекламные щиты не выбраны.');
