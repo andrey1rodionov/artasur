@@ -18,7 +18,7 @@
       >
         <yandex-map :coords="maps.position" :zoom="maps.zoom">
           <ymap-marker
-            v-for="mark in coords"
+            v-for="mark in fetchBillboards()"
             :key="mark.id"
             :coords="mark.markCoords"
             :marker-id="mark.id"
@@ -98,7 +98,6 @@ export default {
           imageOffset: [-32, -32],
         },
       },
-      coords: [],
       settings: {
         apiKey: "9f67bdd5-33ec-4e47-8204-949f76c30100",
         lang: "ru_RU",
@@ -137,7 +136,7 @@ export default {
     },
     fetchBillboards() {
       axios.get("/api.php").then((resp) => {
-        this.coords = JSON.parse(resp.data);
+        return resp.data;
       });
     },
   },
@@ -154,9 +153,6 @@ export default {
   },
   async created() {
     await loadYmap({ ...this.settings, debug: true });
-  },
-  async mounted() {
-    this.fetchBillboards();
   },
 };
 </script>
