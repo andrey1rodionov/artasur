@@ -14,6 +14,12 @@ try {
         preg_match_all('/[\d.]+/', $row['markCoords'], $matches);
         $billboards[$i]['markCoords'] = $matches[0];
 
+        // preg_match_all('/[\d.]+/', $row['markDirection'], $matches);
+        $billboards[$i]['markDirection'] = $matches[0];
+
+        // preg_match_all('/[\d.]+/', $row['markSpan'], $matches);
+        $billboards[$i]['markSpan'] = array(0,0);
+
         $i++;
     }
 
