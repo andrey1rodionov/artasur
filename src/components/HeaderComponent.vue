@@ -108,7 +108,7 @@
                           class="fal fa-file-powerpoint mr-1 text-yellow-500"
                         ></i>
                         <a
-                          href="files/billboard-presentation-4x8.ppt"
+                          href="files/billboard-presentation.ppt"
                           download="billboard-presentation-4x8.ppt"
                           class="opacity-50 hover:opacity-100"
                         >

@@ -113,7 +113,8 @@ export default {
         if (panoramas.length > 0) {
           // eslint-disable-next-line no-unused-vars
           var player = new ymaps.panorama.Player("panorama", panoramas[0], {
-            direction: [256, 16],
+            direction: mark.markDirection,
+            span: mark.markSpan,
             controls: ["panoramaName"],
           });
           document.getElementById("panoramaAdd").onclick = () => {
@@ -123,14 +124,16 @@ export default {
               coords: mark.markCoords,
             });
           };
+          document.getElementById("tittlePanorama").innerHTML = mark.title;
+          document.getElementById("tittlePanorama").style.visibility =
+            "visible";
           document.getElementById("panorama").style.visibility = "visible";
           document.getElementById("panoramaAdd").style.visibility = "visible";
         } else {
-          let errorDiv = document.createElement("div");
-          errorDiv.innerHTML = "<h1>Для данной точки не найдено панорамы</h1>";
-          errorDiv.style.fontSize = "15px";
-          // eslint-disable-next-line no-undef
-          panorama.before(errorDiv);
+          document.getElementById("tittlePanorama").innerHTML =
+            "Для данной точки не найдено панорамы";
+          document.getElementById("tittlePanorama").style.visibility =
+            "visible";
         }
       });
     },
@@ -144,10 +147,12 @@ export default {
   computed: {
     ...mapGetters(["getBillboards"]),
     balloonTemplateWithMap() {
-      return `<div id="panorama" class="invisible lg:h-64 lg:w-72 md:h-56 md:w-64 h-36 w-56"></div>
+      return `
+        <div id="tittlePanorama" class="invisible flex justify-center font-bold text-sm mb-2"></div>
+        <div id="panorama" class="invisible lg:h-64 lg:w-72 md:h-56 md:w-64 h-36 w-56"></div>
         <button
           id="panoramaAdd"
-          class="bg-button-blue text-white py-1 px-2 text-sm focus:outline-none mt-2 mx-auto hover:opacity-90 pulse-single invisible">
+          class="bg-button-blue text-white py-1 px-2 text-sm focus:outline-none mt-2 mb-7 mx-auto hover:opacity-90 pulse-single invisible">
           Добавить
         </button>`;
     },
