@@ -6,7 +6,7 @@ try {
     $billboards = array();
     $i = 0;
 
-    foreach($dbh->query('SELECT * from billsboards') as $row) {
+    foreach($dbh->query('SELECT * from billboards') as $row) {
         $billboards[$i]['id'] = $row['id'];
         $billboards[$i]['title'] = $row['title'];
         $billboards[$i]['markCoords'] = $row['markCoords'];
