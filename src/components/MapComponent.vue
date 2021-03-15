@@ -20,7 +20,7 @@
           <ymap-marker
             v-for="mark in billboardsData"
             :key="mark.id"
-            :coords="mark.markCoords"
+            :coords="mark.markCoords.match(/[\d.]+/gi)"
             :marker-id="mark.id"
             :hint-content="mark.title"
             :icon="maps.markerIcon"
@@ -72,8 +72,7 @@
 </template>
 
 <script>
-import { yandexMap, ymapMarker } from "vue-yandex-maps";
-import { loadYmap } from "vue-yandex-maps";
+import { loadYmap, yandexMap, ymapMarker } from "vue-yandex-maps";
 import CallbackFormComponent from "@/components/CallbackFormComponent";
 import { mapGetters, mapMutations } from "vuex";
 import SelectedBillboardComponent from "@/components/SelectedBillboardComponent";
@@ -136,11 +135,10 @@ export default {
       });
     },
     fetchBillboards() {
-      axios.get("http://media.artasur.by/api.php").then((resp) => {
-        this.billboardsData = resp.data;
-        console.log(this.billboardsData);
-        console.log(this.billboardsData[2]);
-      });
+      axios
+        .get("/api.php")
+        .then((response) => (this.billboardsData = response.data))
+        .catch((error) => console.log(error));
     },
   },
   computed: {
@@ -159,7 +157,6 @@ export default {
   },
   async mounted() {
     await this.fetchBillboards();
-    console.log(this.billboardsData);
   },
 };
 </script>
