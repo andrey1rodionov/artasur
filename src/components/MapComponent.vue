@@ -137,7 +137,7 @@ export default {
     },
     fetchBillboards() {
       axios.get("http://media.artasur.by/api.php").then((resp) => {
-        console.log(resp.data);
+        this.coords = resp.data;
       });
     },
   },
