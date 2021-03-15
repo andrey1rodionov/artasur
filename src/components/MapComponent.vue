@@ -18,7 +18,7 @@
       >
         <yandex-map :coords="maps.position" :zoom="maps.zoom">
           <ymap-marker
-            v-for="mark in coords"
+            v-for="mark in billboardsData"
             :key="mark.id"
             :coords="mark.markCoords"
             :marker-id="mark.id"
@@ -98,7 +98,7 @@ export default {
           imageOffset: [-32, -32],
         },
       },
-      coords: [],
+      billboardsData: [],
       settings: {
         apiKey: "9f67bdd5-33ec-4e47-8204-949f76c30100",
         lang: "ru_RU",
@@ -137,10 +137,9 @@ export default {
     },
     fetchBillboards() {
       axios.get("http://media.artasur.by/api.php").then((resp) => {
-        this.coords.concat(resp.data);
-        console.log(this.coords);
-        console.log(this.coords.length);
-        console.log(this.coords[2]);
+        this.billboardsData = resp.data;
+        console.log(this.billboardsData);
+        console.log(this.billboardsData[2]);
       });
     },
   },
@@ -160,6 +159,7 @@ export default {
   },
   async mounted() {
     await this.fetchBillboards();
+    console.log(this.billboardsData);
   },
 };
 </script>
