@@ -137,7 +137,7 @@ export default {
     },
     fetchBillboards() {
       axios.get("http://media.artasur.by/api.php").then((resp) => {
-        console.log(Array.isArray(resp.data));
+        console.log(this.coords.concat(resp.data));
         // Array.prototype.push.apply(this.coords, resp.data);
       });
     },
@@ -158,7 +158,6 @@ export default {
   },
   async mounted() {
     this.fetchBillboards();
-    console.log(Array.isArray(this.coords));
   },
 };
 </script>
