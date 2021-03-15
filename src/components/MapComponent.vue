@@ -138,7 +138,7 @@ export default {
     fetchBillboards() {
       axios.get("/api.php").then((resp) => {
         console.log(resp);
-        console.log(resp.data());
+        console.log(resp.data);
         console.log(JSON.parse(resp.data));
         console.log(JSON.stringify(resp.data));
         console.log(JSON.parse(JSON.stringify(resp.data)));
