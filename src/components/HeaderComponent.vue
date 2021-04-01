@@ -109,7 +109,7 @@
                         ></i>
                         <a
                           href="files/billboard-presentation.ppt"
-                          download="billboard-presentation-4x8.ppt"
+                          download="billboard-presentation.ppt"
                           class="opacity-50 hover:opacity-100"
                         >
                           презентация
