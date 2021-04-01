@@ -54,6 +54,7 @@ module.exports = {
       height: {
         "3/4-screen": "75vh",
         "3/5-screen": "60vh",
+        "1/2-screen": "50vh",
         "85-percent": "85%",
         72: "18rem",
       },

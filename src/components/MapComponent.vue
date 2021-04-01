@@ -14,9 +14,13 @@
     </div>
     <div class="flex flex-wrap md:px-24 px-12">
       <div
-        class="3xl:mb-32 xl:w-70-percent w-full lg:h-3/4-screen h-3/5-screen mb-12"
+        class="3xl:mb-32 xl:w-70-percent w-full lg:h-3/4-screen h-3/5-screen mb-12 relative"
       >
-        <yandex-map :coords="maps.position" :zoom="maps.zoom">
+        <yandex-map
+          :coords="maps.position"
+          :zoom="maps.zoom"
+          v-show="!isBalloonShow"
+        >
           <ymap-marker
             v-for="mark in billboardsData"
             :key="mark.id"
@@ -24,10 +28,30 @@
             :marker-id="mark.id"
             :hint-content="mark.title"
             :icon="maps.markerIcon"
-            :balloon-template="balloonTemplateWithMap"
             @click="onClickMark(mark)"
           />
         </yandex-map>
+        <div
+          v-if="isBalloonShow"
+          class="w-screen lg:w-full bg-white bg-opacity-30 customBalloon p-4"
+        >
+          <div class="flex justify-center">
+            <div
+              id="tittlePanorama"
+              class="font-bold mb-2 text-center ml-auto text-md 3xl:text-xl 2xl:text-lg xl:text-lg"
+            ></div>
+            <div class="ml-auto -mt-1 -mr-1" @click="isBalloonShow = false">
+              <i class="fal fa-times fa-lg cursor-pointer"></i>
+            </div>
+          </div>
+          <div id="panorama" class="w-full h-1/2-screen lg:h-3/5-screen"></div>
+          <button
+            id="panoramaAdd"
+            class="bg-button-blue text-white py-1 px-2 text-sm focus:outline-none mt-4 mx-auto hover:opacity-90 pulse-single"
+          >
+            Добавить
+          </button>
+        </div>
       </div>
       <div class="flex flex-col xl:w-30-percent xl:pl-12 w-full mb-12">
         <div
@@ -98,6 +122,7 @@ export default {
         },
       },
       billboardsData: [],
+      isBalloonShow: false,
       settings: {
         apiKey: "9f67bdd5-33ec-4e47-8204-949f76c30100",
         lang: "ru_RU",
@@ -123,19 +148,24 @@ export default {
               title: mark.title,
               coords: mark.markCoords,
             });
+            this.isBalloonShow = false;
           };
           document.getElementById("tittlePanorama").innerHTML = mark.title;
-          document.getElementById("tittlePanorama").style.visibility =
-            "visible";
-          document.getElementById("panorama").style.visibility = "visible";
-          document.getElementById("panoramaAdd").style.visibility = "visible";
         } else {
+          document.getElementById("panoramaAdd").onclick = () => {
+            this.ADD_BILLBOARD({
+              id: mark.id,
+              title: mark.title,
+              coords: mark.markCoords,
+            });
+          };
+          this.isBalloonShow = false;
           document.getElementById("tittlePanorama").innerHTML =
-            "Для данной точки не найдено панорамы";
-          document.getElementById("tittlePanorama").style.visibility =
-            "visible";
+            mark.title + "<br>Для данной точки не найдено панорамы";
+          document.getElementById("panorama").style.height = "5vh";
         }
       });
+      this.isBalloonShow = true;
     },
     fetchBillboards() {
       axios
@@ -146,16 +176,6 @@ export default {
   },
   computed: {
     ...mapGetters(["getBillboards"]),
-    balloonTemplateWithMap() {
-      return `
-        <div id="tittlePanorama" class="invisible flex justify-center font-bold text-sm mb-2"></div>
-        <div id="panorama" class="invisible lg:h-64 lg:w-72 md:h-56 md:w-64 h-36 w-56"></div>
-        <button
-          id="panoramaAdd"
-          class="bg-button-blue text-white py-1 px-2 text-sm focus:outline-none mt-2 mb-7 mx-auto hover:opacity-90 pulse-single invisible">
-          Добавить
-        </button>`;
-    },
   },
   async created() {
     await loadYmap({ ...this.settings, debug: true });
@@ -169,4 +189,10 @@ export default {
 <style lang="sass">
 .ymap-container
   height: 100%
+
+.customBalloon
+  position: absolute
+  top: 50%
+  right: 50%
+  transform: translate(50%,-50%)
 </style>
