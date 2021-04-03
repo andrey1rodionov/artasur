@@ -12,6 +12,9 @@
     <div id="mapInformation">
       <MapComponent />
     </div>
+    <div id="information">
+      <InformationComponent />
+    </div>
     <div id="footer">
       <FooterComponent />
     </div>
@@ -24,6 +27,7 @@ import AboutComponent from "@/components/AboutComponent";
 import ClientInformationComponent from "@/components/ClientInformationComponent";
 import MapComponent from "@/components/MapComponent";
 import FooterComponent from "@/components/FooterComponent";
+import InformationComponent from "@/components/InformationComponent";
 
 export default {
   components: {
@@ -32,6 +36,7 @@ export default {
     ClientInformationComponent,
     MapComponent,
     FooterComponent,
+    InformationComponent,
   },
 };
 </script>

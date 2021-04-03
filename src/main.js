@@ -15,6 +15,7 @@ import Vuelidate from "vuelidate";
 import VCalendar from "v-calendar";
 import VueMask from "v-mask";
 import AOS from "aos";
+import VueCarousel from "vue-carousel";
 
 Vue.config.productionTip = false;
 
@@ -35,6 +36,7 @@ Vue.use(VueScrollTo, {
 Vue.use(Vuelidate);
 Vue.use(VueMask);
 Vue.use(VCalendar);
+Vue.use(VueCarousel);
 
 new Vue({
   router,

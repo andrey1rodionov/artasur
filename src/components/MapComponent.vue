@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white pt-16 lg:pb-52 md:pb-32 pb-24 relative bg-site-color">
+  <div class="pt-16 lg:pb-52 md:pb-32 pb-24 relative bg-site-color">
     <div class="flex flex-col items-center px-8">
       <div class="text-xl 3xl:text-5xl 2xl:text-4xl xl:text-3xl pb-4">
         Карта щитов
@@ -19,6 +19,7 @@
         <yandex-map
           :coords="maps.position"
           :zoom="maps.zoom"
+          :controls="['zoomControl', 'typeSelector']"
           v-show="!isBalloonShow"
         >
           <ymap-marker
@@ -74,14 +75,14 @@
         <div class="mb-12 xl:w-full xl:mx-0 md:w-70-percent w-full mx-auto">
           <CallbackFormComponent />
         </div>
-        <div class="text-md 3xl:text-xl 2xl:text-lg xl:text-lg opacity-50">
-          * Постоянно в наличии стройматериалы по низким ценам! <br />
-          <br />
-          * Рекламный щит на МКАД по бартеру! <br />
-          <br />
-          Обращайтесь по телефону: <br />
-          <a href="tel:+375296746298">+375 (29) 674-62-98</a>
-        </div>
+        <!--        <div class="text-md 3xl:text-xl 2xl:text-lg xl:text-lg opacity-50">-->
+        <!--          * Постоянно в наличии стройматериалы по низким ценам! <br />-->
+        <!--          <br />-->
+        <!--          * Рекламный щит на МКАД по бартеру! <br />-->
+        <!--          <br />-->
+        <!--          Обращайтесь по телефону: <br />-->
+        <!--          <a href="tel:+375296746298">+375 (29) 674-62-98</a>-->
+        <!--        </div>-->
       </div>
     </div>
     <svg
@@ -90,7 +91,7 @@
       preserveAspectRatio="none"
       class="svg-line"
     >
-      <polygon fill="#263135" points="0,100 100,0 100,100" />
+      <polygon fill="#83b0ee" points="0,100 100,0 100,100" />
     </svg>
   </div>
 </template>
@@ -101,6 +102,7 @@ import CallbackFormComponent from "@/components/CallbackFormComponent";
 import { mapGetters, mapMutations } from "vuex";
 import SelectedBillboardComponent from "@/components/SelectedBillboardComponent";
 import axios from "axios";
+import billboards from "@/assets/modules/list-of-marks";
 
 export default {
   components: {
@@ -121,7 +123,8 @@ export default {
           imageOffset: [-32, -32],
         },
       },
-      billboardsData: [],
+      // billboardsData: [],
+      billboardsData: billboards.coords,
       isBalloonShow: false,
       settings: {
         apiKey: "9f67bdd5-33ec-4e47-8204-949f76c30100",
@@ -138,8 +141,8 @@ export default {
         if (panoramas.length > 0) {
           // eslint-disable-next-line no-unused-vars
           var player = new ymaps.panorama.Player("panorama", panoramas[0], {
-            direction: mark.markDirection,
-            span: mark.markSpan,
+            // direction: mark.markDirection,
+            // span: mark.markSpan,
             controls: ["panoramaName"],
           });
           document.getElementById("panoramaAdd").onclick = () => {
@@ -158,8 +161,8 @@ export default {
               title: mark.title,
               coords: mark.markCoords,
             });
+            this.isBalloonShow = false;
           };
-          this.isBalloonShow = false;
           document.getElementById("tittlePanorama").innerHTML =
             mark.title + "<br>Для данной точки не найдено панорамы";
           document.getElementById("panorama").style.height = "5vh";
@@ -181,7 +184,7 @@ export default {
     await loadYmap({ ...this.settings, debug: true });
   },
   async mounted() {
-    await this.fetchBillboards();
+    // await this.fetchBillboards();
   },
 };
 </script>

@@ -23,6 +23,7 @@
     "v-mask": "^2.2.4",
     "vue": "^2.6.11",
     "vue-burger-menu": "^2.0.5",
+    "vue-carousel": "^0.18.0",
     "vue-kinesis": "^1.2.3",
     "vue-router": "^3.5.1",
     "vue-scrollto": "^2.20.0",

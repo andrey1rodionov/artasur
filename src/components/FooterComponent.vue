@@ -182,7 +182,7 @@
           <img src="../assets/images/artasur-logo-footer.png" alt="" />
         </a>
       </div>
-      <div class="md:w-3/5 w-full mb-8 md:mb-0">
+      <div class="md:w-3/5 w-full mb-8 md:mb-0 break-words">
         ООО «Артасур», РБ, 223053, Минская обл., Минский р-н, д. Боровляны, ул.
         Березовая роща, 106, офис 133
         <br />
@@ -226,7 +226,4 @@ export default {};
 .map-div
   width: 25%
   height: 100vh
-
-.ymap-container
-  height: 100%
 </style>

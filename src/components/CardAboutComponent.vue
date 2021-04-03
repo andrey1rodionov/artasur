@@ -1,7 +1,7 @@
 <template>
   <kinesis-container class="lg:w-1/3 xl:w-1/4 md:w-1/2 w-full mx-8 mb-14">
     <kinesis-element :strength="5" type="depth" class="h-full">
-      <div class="flex flex-col items-center bg-white h-full p-14">
+      <div class="flex flex-col items-center bg-white h-full p-14 rounded-lg">
         <div
           class="rounded-full h-28 w-28 flex items-center justify-center mx-auto"
           :class="gradient"
@@ -14,7 +14,7 @@
           {{ header }}
         </div>
         <div
-          class="text-center opacity-50 text-sm 3xl:text-xl 2xl:text-lg xl:text-lg"
+          class="text-center opacity-50 text-md 3xl:text-2xl 2xl:text-xl xl:text-lg"
         >
           {{ text }}
         </div>

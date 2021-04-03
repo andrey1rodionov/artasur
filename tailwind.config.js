@@ -49,6 +49,7 @@ module.exports = {
         "70-percent": "70%",
         "30-percent": "30%",
         "55-percent": "55%",
+        "85-percent": "85%",
         72: "18rem",
       },
       height: {
