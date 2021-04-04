@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="bg-site-color pt-16 lg:pb-52 3xl:pb-64 md:pb-32 pb-24 bg-gradient-to-b from-bgColor-from to-bgColor-to relative"
-  >
+  <div class="bg-white pt-16 lg:pb-52 3xl:pb-64 md:pb-32 pb-24 relative">
     <div class="md:px-24 px-12">
       <carousel
         :autoplay="true"
@@ -18,18 +16,45 @@
         ]"
       >
         <slide>
-          <img
-            class="lg:w-70-percent w-85-percent 3xl:w-3/5 m-auto"
-            src="../assets/images/information-1.jpg"
-            alt=""
-          />
+          <div
+            class="lg:w-70-percent w-85-percent 3xl:w-3/5 m-auto h-full transform lg:hover:-translate-y-2 slide"
+          >
+            <div
+              class="flex flex-col items-center bg-white h-full py-14 px-8 rounded-lg bg-footer-bg"
+            >
+              <div class="flex items-center justify-center mx-auto">
+                <i class="fas fa-digging fa-4x text-white"></i>
+              </div>
+              <div
+                class="text-center text-md 3xl:text-2xl 2xl:text-xl xl:text-lg py-8 text-white"
+              >
+                Постоянно в наличии стройматериалы по низким ценам! <br />
+                <br />
+                <a href="tel:+375296746298">+375 (29) 674-62-98</a>
+              </div>
+            </div>
+          </div>
         </slide>
         <slide>
-          <img
-            class="lg:w-70-percent w-85-percent 3xl:w-3/5 m-auto"
-            src="../assets/images/information-2.jpg"
-            alt=""
-          />
+          <div
+            class="lg:w-70-percent w-85-percent 3xl:w-3/5 m-auto h-full transform lg:hover:-translate-y-2 slide"
+          >
+            <div
+              class="flex flex-col items-center bg-white h-full py-14 px-8 rounded-lg bg-footer-bg"
+            >
+              <div class="flex items-center justify-center mx-auto">
+                <i class="fas fa-sync fa-4x text-white"></i>
+              </div>
+              <div
+                class="text-center text-md 3xl:text-2xl 2xl:text-xl xl:text-lg py-8 text-white"
+              >
+                Рекламный щит на МКАД <br />
+                по бартеру! <br />
+                <br />
+                <a href="tel:+375296746298">+375 (29) 674-62-98</a>
+              </div>
+            </div>
+          </div>
         </slide>
       </carousel>
     </div>
@@ -63,4 +88,7 @@ export default {
 <style lang="sass">
 .VueCarousel-navigation-button
   @apply -mt-7
+
+.slide
+  transition: all .2s ease-in-out
 </style>
