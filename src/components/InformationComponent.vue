@@ -71,10 +71,10 @@
 export default {
   computed: {
     navigationNext: () => {
-      return `<i class="fas fa-chevron-right fa-2x" style="color: white"></i>`;
+      return `<i class="fas fa-chevron-right fa-2x" style="color: #263135"></i>`;
     },
     navigationPrev: () => {
-      return `<i class="fas fa-chevron-left fa-2x" style="color: white"></i>`;
+      return `<i class="fas fa-chevron-left fa-2x" style="color: #263135"></i>`;
     },
     paginationActive: () => {
       return `#263135`;

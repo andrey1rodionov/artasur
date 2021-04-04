@@ -188,7 +188,7 @@
         <div class="pt-8">
           <div class="md:text-3xl text-2xl">Эффективная наружная реклама</div>
           <div class="py-4 text-md md:text-2xl text-lg">
-            Реклама на биллбордах
+            Реклама на билбордах
           </div>
         </div>
         <div class="pt-8">

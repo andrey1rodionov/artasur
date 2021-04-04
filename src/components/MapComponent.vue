@@ -12,7 +12,7 @@
         с Вами свяжемся!
       </div>
     </div>
-    <div class="flex flex-wrap md:px-24 px-12">
+    <div class="flex flex-wrap md:px-24">
       <div
         class="3xl:mb-32 xl:w-70-percent w-full lg:h-3/4-screen h-3/5-screen mb-12 relative"
       >
