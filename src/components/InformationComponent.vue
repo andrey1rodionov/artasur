@@ -14,13 +14,13 @@
           [300, 1],
           [1024, 2],
         ]"
+        data-aos="fade-up"
+        data-aos-delay="250"
       >
         <slide>
-          <div
-            class="lg:w-70-percent w-85-percent 3xl:w-3/5 m-auto h-full transform lg:hover:-translate-y-2 slide"
-          >
+          <div class="lg:w-70-percent w-85-percent 3xl:w-3/5 m-auto h-full">
             <div
-              class="flex flex-col items-center bg-white h-full py-14 px-8 rounded-lg bg-footer-bg"
+              class="flex flex-col items-center h-full py-14 px-8 rounded-lg bg-footer-bg slide"
             >
               <div class="flex items-center justify-center mx-auto">
                 <i class="fas fa-digging fa-4x text-white"></i>
@@ -36,11 +36,9 @@
           </div>
         </slide>
         <slide>
-          <div
-            class="lg:w-70-percent w-85-percent 3xl:w-3/5 m-auto h-full transform lg:hover:-translate-y-2 slide"
-          >
+          <div class="lg:w-70-percent w-85-percent 3xl:w-3/5 m-auto h-full">
             <div
-              class="flex flex-col items-center bg-white h-full py-14 px-8 rounded-lg bg-footer-bg"
+              class="flex flex-col items-center h-full py-14 px-8 rounded-lg bg-footer-bg slide"
             >
               <div class="flex items-center justify-center mx-auto">
                 <i class="fas fa-sync fa-4x text-white"></i>
@@ -90,5 +88,6 @@ export default {
   @apply -mt-7
 
 .slide
-  transition: all .2s ease-in-out
+  &:hover
+    background-color: #313c40
 </style>
