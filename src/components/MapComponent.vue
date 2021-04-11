@@ -162,7 +162,7 @@ export default {
     },
     fetchBillboards() {
       axios
-        .get("/api.php")
+        .get("/api.php", { params: { action: "all" } })
         .then((response) => (this.billboardsData = response.data))
         .catch((error) => console.log(error));
     },
