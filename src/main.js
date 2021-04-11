@@ -16,6 +16,7 @@ import VCalendar from "v-calendar";
 import VueMask from "v-mask";
 import AOS from "aos";
 import VueCarousel from "vue-carousel";
+import VueSwal from "vue-swal";
 
 Vue.config.productionTip = false;
 
@@ -37,6 +38,7 @@ Vue.use(Vuelidate);
 Vue.use(VueMask);
 Vue.use(VCalendar);
 Vue.use(VueCarousel);
+Vue.use(VueSwal);
 
 new Vue({
   router,
