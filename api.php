@@ -1,12 +1,23 @@
 <?php
 
+// createUrl();
+
 $data = file_get_contents("php://input");
 
 $fp = fopen('api_values.txt', 'a');
 fwrite($fp, $data);
 fclose($fp);
 
-switch ($data['action']) {
+$data = json_decode($data, true);
+
+$action = '';
+
+if(isset($data['action']))
+    $action = $data['action'];
+else
+    $action = $_GET['action'];
+
+switch ($action) {
     case 'all':
         getAll();
         break;
@@ -24,7 +35,7 @@ switch ($data['action']) {
         break;
 
     case 'delete':
-        delete($data['data']['id']);
+        delete($data['data']);
         break;
     
     default:
@@ -32,11 +43,36 @@ switch ($data['action']) {
         break;
 }
 
+// function createUrl() {
+//     $dbh = new PDO('mysql:host=localhost;dbname=artasurb_db', 'artasurb_db_user', 'db_pass');
+
+//     foreach($dbh->query('SELECT * FROM billboards') as $row) {
+        
+//         $url = 'https://yandex.by/maps/157/minsk/geo/2171251432/?l=stv%2Csta&ll=27.677485%2C53.942090&panorama%5Bdirection%5D=196.068888%2C1.000000&panorama%5Bfull%5D=true&panorama%5Bpoint%5D=27.675213%2C53.936054&panorama%5Bspan%5D=118.736777%2C60.000000&tab=panorama&z=13.74';
+
+//         $params = array();
+//         $url = parse_url($url);
+//         parse_str($url['query'], $params);
+        
+//         preg_match_all('/[\d.]+/', $row['markCoords'], $matches);
+//         $params['panorama']['point'] = $matches[0][1].','.$matches[0][0];
+//         preg_match_all('/[\d.]+/', $row['markDirection'], $matches);
+//         $params['panorama']['direction'] = $matches[0][0].','.$matches[0][1];
+//         preg_match_all('/[\d.]+/', $row['markSpan'], $matches);
+//         $params['panorama']['span'] = $matches[0][0].','.$matches[0][1];
+
+//         $new_url = 'https://yandex.by/maps/157/minsk/geo/2171251432/?'.http_build_query($params);
+        
+//         update($row['id'],$row['title'],$new_url);
+//     }
+    
+// }
+
 function getAll() {
     try {
         $dbh = new PDO('mysql:host=localhost;dbname=artasurb_db', 'artasurb_db_user', 'db_pass');
 
-        $billboards = array();
+        $billboards;
         $i = 0;
 
         foreach($dbh->query('SELECT id, title, markCoords, markDirection, markSpan from billboards') as $row) {
@@ -48,10 +84,10 @@ function getAll() {
             $billboards[$i]['markCoords'] = $matches[0];
 
             preg_match_all('/[\d.]+/', $row['markDirection'], $matches);
-            $billboards['markDirection'] = $matches[0];
+            $billboards[$i]['markDirection'] = $matches[0];
     
             preg_match_all('/[\d.]+/', $row['markSpan'], $matches);
-            $billboards['markSpan'] = $matches[0];
+            $billboards[$i]['markSpan'] = $matches[0];
 
             $i++;
         }
@@ -65,7 +101,6 @@ function getAll() {
         return true;
     }
 
-    header("HTTP/1.1 200 OK", true, 200);
     return true;
 }
 
@@ -80,20 +115,27 @@ function getById($id) {
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $result->execute();
 
+        if($result->rowCount() <= 0) {
+            header("HTTP/1.1 500 Internal Server Error", true, 500);
+            return false;
+        }
+
+        $row = $result->fetch();
+
         $billboard = array();
-        $billboards['id'] = $row['id'];
-        $billboards['title'] = $row['title'];
-        $billboards['url'] = $row['url'];
+        $billboard['id'] = $row['id'];
+        $billboard['title'] = $row['title'];
+        $billboard['url'] = $row['url'];
 
         $matches = array();
         preg_match_all('/[\d.]+/', $row['markCoords'], $matches);
-        $billboards['markCoords'] = $matches[0];
+        $billboard['markCoords'] = $matches[0];
 
         preg_match_all('/[\d.]+/', $row['markDirection'], $matches);
-        $billboards['markDirection'] = $matches[0];
+        $billboard['markDirection'] = $matches[0];
 
         preg_match_all('/[\d.]+/', $row['markSpan'], $matches);
-        $billboards['markSpan'] = $matches[0];
+        $billboard['markSpan'] = $matches[0];
 
         print json_encode($billboard, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
 
@@ -104,7 +146,6 @@ function getById($id) {
         return true;
     }
 
-    header("HTTP/1.1 200 OK", true, 200);
     return true;
 }
 
@@ -145,7 +186,6 @@ function insert($title, $url) {
         return true;
     }
 
-    header("HTTP/1.1 200 OK", true, 200);
     return true;
 }
 
@@ -173,7 +213,6 @@ function update($id, $title, $url) {
         return true;
     }
 
-    header("HTTP/1.1 200 OK", true, 200);
     return true;
 }
 
@@ -194,7 +233,6 @@ function delete($id) {
         return true;
     }
 
-    header("HTTP/1.1 200 OK", true, 200);
     return true;
 }
 
