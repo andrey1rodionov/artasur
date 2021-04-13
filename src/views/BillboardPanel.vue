@@ -4,7 +4,7 @@
       class="flex flex-col items-center bg-footer-bg text-gray-700 shadow h-full fixed"
     >
       <div class="h-16 flex items-center w-full">
-        <a class="h-6 w-6 mx-auto" href="#">
+        <a class="h-6 w-6 mx-auto" :href="`${this.$route.path}`">
           <img
             class="h-6 w-6 mx-auto"
             src="../assets/images/logo_small.png"
@@ -318,7 +318,10 @@ export default {
     },
     isUrlCorrect() {
       if (!this.URL) {
-        document.getElementById("grid-url").focus();
+        window.open(
+          "https://yandex.by/maps/157/minsk/geo/2171251432/?l=stv%2Csta&ll=27.677485%2C53.942090&panorama%5Bdirection%5D=196.068888%2C1.000000&panorama%5Bfull%5D=true&panorama%5Bpoint%5D=27.675213%2C53.936054&panorama%5Bspan%5D=110.439471%2C60.000000&tab=panorama&z=13",
+          "_blank"
+        );
       } else if (this.checkUrl(this.URL)) {
         window.open(this.URL, "_blank");
       } else {
