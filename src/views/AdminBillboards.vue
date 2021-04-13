@@ -168,17 +168,21 @@ export default {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.post("/api.php", { action: "delete", data: id }).then((res) => {
-            if (res.status === 200) {
-              this.fetchBillboardsData();
-              this.$swal({
-                icon: "success",
-                title: "Удалено!",
-                text: "Билборд успешно удален",
-                buttons: false,
-                timer: 3000,
-              });
-            } else {
+          axios
+            .post("/api.php", { action: "delete", data: id })
+            .then((res) => {
+              if (res.status === 200) {
+                this.fetchBillboardsData();
+                this.$swal({
+                  icon: "success",
+                  title: "Удалено!",
+                  text: "Билборд успешно удален",
+                  buttons: false,
+                  timer: 3000,
+                });
+              }
+            })
+            .catch((error) => {
               this.$swal({
                 icon: "error",
                 title: "Упс...",
@@ -186,8 +190,8 @@ export default {
                 buttons: false,
                 timer: 3000,
               });
-            }
-          });
+              console.log(error);
+            });
         }
       });
     },

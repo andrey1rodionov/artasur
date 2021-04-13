@@ -83,6 +83,11 @@
         class="bg-white shadow-md rounded px-8 w-1/2 pt-6 pb-8 mb-4 flex flex-col"
         @submit.prevent="onSubmit"
       >
+        <div
+          class="flex justify-center py-6 tracking-wide text-grey-darker text-xl font-bold"
+        >
+          {{ formTitle }}
+        </div>
         <div class="-mx-3 md:flex mb-6">
           <div class="w-full px-3 mb-6 md:mb-0">
             <label
@@ -284,6 +289,7 @@ export default {
       notificationValue: "",
       isGoodNotificationShow: false,
       isBadNotificationShow: false,
+      formTitle: "",
     };
   },
   validations: {
@@ -299,10 +305,12 @@ export default {
     }
     if (this.$route.path === "/admin/billboard/new") {
       this.buttonValue = "Добавить";
+      this.formTitle = "Добавление нового билборда";
     } else {
+      this.formTitle = "Изменение билборда";
       this.buttonValue = "Применить";
+      this.getBillboardData();
     }
-    this.getBillboardData();
   },
   methods: {
     exit() {
@@ -334,7 +342,7 @@ export default {
       if (this.buttonValue === "Добавить") {
         billboardData = {
           title: this.title,
-          URL: this.URL,
+          url: this.URL,
         };
 
         axios
@@ -345,26 +353,28 @@ export default {
               this.title = this.URL = this.coords = this.direction = this.span =
                 "";
               this.isGoodNotificationShow = true;
+              this.$v.$reset();
               setTimeout(() => {
                 this.isGoodNotificationShow = false;
-                this.$v.$reset();
-              }, 5000);
-            } else {
-              this.notificationValue = "Ошибка добавления!";
-              this.title = this.URL = this.coords = this.direction = this.span =
-                "";
-              this.isBadNotificationShow = true;
-              setTimeout(() => {
-                this.isBadNotificationShow = false;
-                this.$v.$reset();
               }, 5000);
             }
+          })
+          .catch((error) => {
+            this.notificationValue = "Ошибка добавления!";
+            this.title = this.URL = this.coords = this.direction = this.span =
+              "";
+            this.isBadNotificationShow = true;
+            this.$v.$reset();
+            setTimeout(() => {
+              this.isBadNotificationShow = false;
+            }, 5000);
+            console.log(error);
           });
       } else {
         billboardData = {
           id: this.$route.params.id,
           title: this.title,
-          URL: this.URL,
+          url: this.URL,
         };
         axios
           .post("/api.php", { action: "update", data: billboardData })
@@ -372,21 +382,23 @@ export default {
             if (res.status === 200) {
               this.notificationValue = "Билборд успешно обновлен!";
               this.isGoodNotificationShow = true;
+              this.$v.$reset();
               setTimeout(() => {
                 this.isGoodNotificationShow = false;
                 this.$router.push("/admin/billboards");
-                this.$v.$reset();
-              }, 5000);
-            } else {
-              this.notificationValue = "Ошибка обновления!";
-              this.title = this.URL = this.coords = this.direction = this.span =
-                "";
-              this.isBadNotificationShow = true;
-              setTimeout(() => {
-                this.isBadNotificationShow = false;
-                this.$v.$reset();
               }, 5000);
             }
+          })
+          .catch((error) => {
+            this.notificationValue = "Ошибка обновления!";
+            this.title = this.URL = this.coords = this.direction = this.span =
+              "";
+            this.isBadNotificationShow = true;
+            this.$v.$reset();
+            setTimeout(() => {
+              this.isBadNotificationShow = false;
+            }, 5000);
+            console.log(error);
           });
       }
     },
@@ -422,6 +434,10 @@ export default {
             this.direction = res.data.markDirection;
             this.span = res.data.markSpan;
           }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.$router.push("/admin/billboard/new");
         });
     },
   },
