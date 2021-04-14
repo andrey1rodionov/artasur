@@ -9320,6 +9320,11 @@ vue-yandex-maps@^0.10.9:
   resolved "https://registry.yarnpkg.com/vue-yandex-maps/-/vue-yandex-maps-0.10.9.tgz#e521660201508474ab9855162f04026fdbe67c0f"
   integrity sha512-gDRU3bGFGxMYE8XFcyrSndRzxTC6opvKL4WvIhMRD8SctObQWdonI0h2NpU8Srn5ge8MV5a9QDjQs9Mrqj+slA==
 
+vue-yandex-metrika@^1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/vue-yandex-metrika/-/vue-yandex-metrika-1.8.3.tgz#f27d71f385ae3f20544a4d295865a2e446293c60"
+  integrity sha512-WD/2CPM5NWXg7JdmgfiOq8J5QbidrCDoDAaE0JfE32wceY56ewzERVGnOGS/Tfx+HvarGc+oJsBbZxl/e2BWTA==
+
 vue@^2.5.17, vue@^2.6.11:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"

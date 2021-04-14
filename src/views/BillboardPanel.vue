@@ -15,7 +15,8 @@
       <ul class="w-full">
         <li class="hover:bg-footer-textHover">
           <a
-            href="files/rukovodstvo-polzovatelya.docx"
+            href="files/rukovodstvo-polzovatelya.doc"
+            download="rukovodstvo-polzovatelya.doc"
             title="Скачать руководство пользователя"
             class="h-16 px-6 flex flex justify-center items-center w-full focus:text-orange-500 text-white fa fa-question"
           >

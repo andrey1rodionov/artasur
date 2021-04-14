@@ -17,6 +17,7 @@ import VueMask from "v-mask";
 import AOS from "aos";
 import VueCarousel from "vue-carousel";
 import VueSwal from "vue-swal";
+import VueYandexMetrika from "vue-yandex-metrika";
 
 Vue.config.productionTip = false;
 
@@ -39,6 +40,11 @@ Vue.use(VueMask);
 Vue.use(VCalendar);
 Vue.use(VueCarousel);
 Vue.use(VueSwal);
+Vue.use(VueYandexMetrika, {
+  id: 75751591,
+  router: router,
+  env: process.env.NODE_ENV,
+});
 
 new Vue({
   router,

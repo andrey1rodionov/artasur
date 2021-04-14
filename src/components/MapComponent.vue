@@ -117,7 +117,7 @@ export default {
       billboardsData: [],
       isBalloonShow: false,
       settings: {
-        apiKey: "9f67bdd5-33ec-4e47-8204-949f76c30100",
+        apiKey: "f04bd8a6-94c6-42d6-bf90-082e75321063",
         lang: "ru_RU",
         coordorder: "latlong",
         version: "2.1",

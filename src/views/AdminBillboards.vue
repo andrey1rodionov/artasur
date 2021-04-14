@@ -121,7 +121,7 @@
           </thead>
           <tbody class="bg-white">
             <TableRowComponent
-              v-for="mark in filterBillboards(billboardsData)"
+              v-for="mark in filterBillboards"
               :key="mark.id"
               :id="mark.id"
               :title="mark.title"
@@ -153,12 +153,6 @@ export default {
   methods: {
     exit() {
       localStorage.removeItem("authKey");
-    },
-    filterBillboards(presets) {
-      return presets.filter((preset) => {
-        let regex = new RegExp("(" + this.inputValue + ")", "i");
-        return preset.title.match(regex);
-      });
     },
     deleteBillboard({ id, title }) {
       this.$swal({
@@ -207,6 +201,13 @@ export default {
       this.$router.push("/admin");
     }
     this.fetchBillboardsData();
+  },
+  computed: {
+    filterBillboards() {
+      return this.billboardsData.filter((billBoardsTitle) => {
+        return billBoardsTitle.title.includes(this.inputValue);
+      });
+    },
   },
 };
 </script>
