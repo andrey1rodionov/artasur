@@ -15,9 +15,9 @@
       <ul class="w-full">
         <li class="hover:bg-footer-textHover">
           <a
-            href="#"
+            href="files/rukovodstvo-polzovatelya.docx"
+            title="Скачать руководство пользователя"
             class="h-16 px-6 flex flex justify-center items-center w-full focus:text-orange-500 text-white fa fa-question"
-            @click="isQuestionDivShow = !isQuestionDivShow"
           >
           </a>
         </li>
@@ -56,28 +56,7 @@
         </a>
       </div>
     </aside>
-    <transition name="fade">
-      <div
-        class="bg-white text-black whitespace-pre-wrap w-1/5 p-4 rounded-md question-menu absolute text-lg shadow-2xl"
-        v-if="isQuestionDivShow"
-      >
-        <div class="relative">
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-            asperiores aut culpa dolorum error, excepturi expedita magnam
-            molestias placeat provident reprehenderit tenetur vitae voluptates!
-            Asperiores aspernatur atque aut blanditiis deserunt eveniet fuga
-            harum illum incidunt inventore ipsa laborum molestiae odit officiis
-            optio perferendis quaerat, quo recusandae rerum vero voluptas
-            voluptatum.
-          </div>
-        </div>
-      </div>
-    </transition>
-    <div
-      class="h-screen w-full pl-14 flex items-center justify-center"
-      @click="isQuestionDivShow = false"
-    >
+    <div class="h-screen w-full pl-14 flex items-center justify-center">
       <!-- component -->
       <form
         class="bg-white shadow-md rounded px-8 w-1/2 pt-6 pb-8 mb-4 flex flex-col"
@@ -284,7 +263,6 @@ export default {
       coords: "",
       direction: "",
       span: "",
-      isQuestionDivShow: false,
       buttonValue: "",
       notificationValue: "",
       isGoodNotificationShow: false,
@@ -441,20 +419,11 @@ export default {
         .catch((error) => {
           console.log(error);
           this.$router.push("/admin/billboard/new");
+          location.reload();
         });
     },
   },
 };
 </script>
 
-<style scoped lang="sass">
-.question-menu
-  top: 1.5%
-  left: 5%
-
-.fade-enter-active, .fade-leave-active
-  transition: opacity .3s
-
-.fade-enter, .fade-leave-to
-  opacity: 0
-</style>
+<style scoped></style>
