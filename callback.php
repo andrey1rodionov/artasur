@@ -8,8 +8,8 @@ fclose($fp);
 
 $data = json_decode($data, true);
 
-$to  = "vladislavzubetcs@gmail.com, " ; 
-$to .= "<vladislavzubetcs@gmail.com>"; 
+$to  = "info@artasur.by, " ; 
+$to .= "<info@artasur.by>"; 
 
 $subject = "artasur.by: Заявка на обратный звонок"; 
 
