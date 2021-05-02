@@ -223,7 +223,9 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.getItem("authKey") === "1111") {
+    if (
+      localStorage.getItem("authKey") === `${process.env.VUE_APP_ADMIN_KEY}`
+    ) {
       this.$router.push("admin/billboards");
     }
   },

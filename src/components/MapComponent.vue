@@ -117,7 +117,7 @@ export default {
       billboardsData: [],
       isBalloonShow: false,
       settings: {
-        apiKey: "f04bd8a6-94c6-42d6-bf90-082e75321063",
+        apiKey: `${process.env.VUE_APP_API_KEY}`,
         lang: "ru_RU",
         coordorder: "latlong",
         version: "2.1",
